@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1BBAA5DD188A850400F9B74C /* JYCalendarMonthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBAA5DC188A850400F9B74C /* JYCalendarMonthCell.m */; };
+		1BBAA5E0188A87FA00F9B74C /* JYDateEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBAA5DF188A87FA00F9B74C /* JYDateEntity.m */; };
 		1BBDC3F9188930CC00EB2954 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BBDC3F8188930CC00EB2954 /* Foundation.framework */; };
 		1BBDC3FB188930CC00EB2954 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BBDC3FA188930CC00EB2954 /* CoreGraphics.framework */; };
 		1BBDC3FD188930CC00EB2954 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BBDC3FC188930CC00EB2954 /* UIKit.framework */; };
@@ -26,11 +28,10 @@
 		1BBDC43618896AB800EB2954 /* NSCalendar+JYCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBDC43518896AB800EB2954 /* NSCalendar+JYCalendar.m */; };
 		1BBDC44018896EBC00EB2954 /* JYCalendarDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBDC43F18896EBC00EB2954 /* JYCalendarDataSource.m */; };
 		1BBDC44918897CF400EB2954 /* JYCalendarUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBDC44818897CF400EB2954 /* JYCalendarUtil.m */; };
-		1BBDC44D188A5A6600EB2954 /* JYCalendarWeekCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBDC44C188A5A6600EB2954 /* JYCalendarWeekCell.m */; };
 		1BBDC450188A5A7600EB2954 /* JYCalendarDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBDC44F188A5A7600EB2954 /* JYCalendarDetailCell.m */; };
-		1BBDC453188A5ADA00EB2954 /* JYCalendarTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBDC452188A5ADA00EB2954 /* JYCalendarTableView.m */; };
-		1BBDC456188A5B2400EB2954 /* JYCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBDC455188A5B2400EB2954 /* JYCalendarViewController.m */; };
 		1BBDC45A188A5C1400EB2954 /* JYCalendarDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBDC459188A5C1400EB2954 /* JYCalendarDateView.m */; };
+		1BBDC45D188A6CD400EB2954 /* JYCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBDC45C188A6CD400EB2954 /* JYCalendarViewController.m */; };
+		4B36B7CAAE734CCF95CDD0F2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F57C7011C3456592146F79 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1BBAA5DB188A850400F9B74C /* JYCalendarMonthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYCalendarMonthCell.h; sourceTree = "<group>"; };
+		1BBAA5DC188A850400F9B74C /* JYCalendarMonthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYCalendarMonthCell.m; sourceTree = "<group>"; };
+		1BBAA5DE188A87FA00F9B74C /* JYDateEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYDateEntity.h; sourceTree = "<group>"; };
+		1BBAA5DF188A87FA00F9B74C /* JYDateEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYDateEntity.m; sourceTree = "<group>"; };
 		1BBDC3F5188930CC00EB2954 /* JYCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JYCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BBDC3F8188930CC00EB2954 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1BBDC3FA188930CC00EB2954 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -73,16 +78,14 @@
 		1BBDC43F18896EBC00EB2954 /* JYCalendarDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYCalendarDataSource.m; sourceTree = "<group>"; };
 		1BBDC44718897CF400EB2954 /* JYCalendarUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYCalendarUtil.h; sourceTree = "<group>"; };
 		1BBDC44818897CF400EB2954 /* JYCalendarUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYCalendarUtil.m; sourceTree = "<group>"; };
-		1BBDC44B188A5A6600EB2954 /* JYCalendarWeekCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYCalendarWeekCell.h; sourceTree = "<group>"; };
-		1BBDC44C188A5A6600EB2954 /* JYCalendarWeekCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYCalendarWeekCell.m; sourceTree = "<group>"; };
 		1BBDC44E188A5A7600EB2954 /* JYCalendarDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYCalendarDetailCell.h; sourceTree = "<group>"; };
 		1BBDC44F188A5A7600EB2954 /* JYCalendarDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYCalendarDetailCell.m; sourceTree = "<group>"; };
-		1BBDC451188A5ADA00EB2954 /* JYCalendarTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYCalendarTableView.h; sourceTree = "<group>"; };
-		1BBDC452188A5ADA00EB2954 /* JYCalendarTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYCalendarTableView.m; sourceTree = "<group>"; };
-		1BBDC454188A5B2400EB2954 /* JYCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYCalendarViewController.h; sourceTree = "<group>"; };
-		1BBDC455188A5B2400EB2954 /* JYCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYCalendarViewController.m; sourceTree = "<group>"; };
 		1BBDC458188A5C1400EB2954 /* JYCalendarDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYCalendarDateView.h; sourceTree = "<group>"; };
 		1BBDC459188A5C1400EB2954 /* JYCalendarDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYCalendarDateView.m; sourceTree = "<group>"; };
+		1BBDC45B188A6CD400EB2954 /* JYCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYCalendarViewController.h; sourceTree = "<group>"; };
+		1BBDC45C188A6CD400EB2954 /* JYCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYCalendarViewController.m; sourceTree = "<group>"; };
+		71F57C7011C3456592146F79 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		79780C679AFB48739D4845C8 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +96,7 @@
 				1BBDC3FB188930CC00EB2954 /* CoreGraphics.framework in Frameworks */,
 				1BBDC3FD188930CC00EB2954 /* UIKit.framework in Frameworks */,
 				1BBDC3F9188930CC00EB2954 /* Foundation.framework in Frameworks */,
+				4B36B7CAAE734CCF95CDD0F2 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +120,7 @@
 				1BBDC41D188930CC00EB2954 /* JYCalendarTests */,
 				1BBDC3F7188930CC00EB2954 /* Frameworks */,
 				1BBDC3F6188930CC00EB2954 /* Products */,
+				79780C679AFB48739D4845C8 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,6 +140,7 @@
 				1BBDC3FA188930CC00EB2954 /* CoreGraphics.framework */,
 				1BBDC3FC188930CC00EB2954 /* UIKit.framework */,
 				1BBDC417188930CC00EB2954 /* XCTest.framework */,
+				71F57C7011C3456592146F79 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -205,10 +211,10 @@
 				1BBDC43F18896EBC00EB2954 /* JYCalendarDataSource.m */,
 				1BBDC44718897CF400EB2954 /* JYCalendarUtil.h */,
 				1BBDC44818897CF400EB2954 /* JYCalendarUtil.m */,
-				1BBDC451188A5ADA00EB2954 /* JYCalendarTableView.h */,
-				1BBDC452188A5ADA00EB2954 /* JYCalendarTableView.m */,
-				1BBDC454188A5B2400EB2954 /* JYCalendarViewController.h */,
-				1BBDC455188A5B2400EB2954 /* JYCalendarViewController.m */,
+				1BBDC45B188A6CD400EB2954 /* JYCalendarViewController.h */,
+				1BBDC45C188A6CD400EB2954 /* JYCalendarViewController.m */,
+				1BBAA5DE188A87FA00F9B74C /* JYDateEntity.h */,
+				1BBAA5DF188A87FA00F9B74C /* JYDateEntity.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -216,10 +222,10 @@
 		1BBDC44A188A5A4A00EB2954 /* cells */ = {
 			isa = PBXGroup;
 			children = (
-				1BBDC44B188A5A6600EB2954 /* JYCalendarWeekCell.h */,
-				1BBDC44C188A5A6600EB2954 /* JYCalendarWeekCell.m */,
 				1BBDC44E188A5A7600EB2954 /* JYCalendarDetailCell.h */,
 				1BBDC44F188A5A7600EB2954 /* JYCalendarDetailCell.m */,
+				1BBAA5DB188A850400F9B74C /* JYCalendarMonthCell.h */,
+				1BBAA5DC188A850400F9B74C /* JYCalendarMonthCell.m */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -241,9 +247,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1BBDC427188930CC00EB2954 /* Build configuration list for PBXNativeTarget "JYCalendar" */;
 			buildPhases = (
+				7B0088F96BB94D62ACB59DD0 /* Check Pods Manifest.lock */,
 				1BBDC3F1188930CC00EB2954 /* Sources */,
 				1BBDC3F2188930CC00EB2954 /* Frameworks */,
 				1BBDC3F3188930CC00EB2954 /* Resources */,
+				A4022AC0D7414E8B96358013 /* Copy Pods Resources */,
+				1BBAA5E1188BAC0600F9B74C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -327,6 +336,52 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1BBAA5E1188BAC0600F9B74C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export CODESIGN_ALLOCATE=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/codesign_allocate\nif [ \"${PLATFORM_NAME}\" == \"iphoneos\" ] || [ \"${PLATFORM_NAME}\" == \"ipados\" ]; then\n/Applications/Xcode.app/Contents/Developer/iphoneentitlements/gen_entitlements.py \"my.company.${PROJECT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${PROJECT_NAME}.xcent\";\ncodesign -f -s \"iPhone Developer\" --entitlements \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${PROJECT_NAME}.xcent\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/\"\nfi";
+		};
+		7B0088F96BB94D62ACB59DD0 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A4022AC0D7414E8B96358013 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1BBDC3F1188930CC00EB2954 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -335,14 +390,14 @@
 				1BBDC405188930CC00EB2954 /* main.m in Sources */,
 				1BBDC4331889344D00EB2954 /* NSString+JYCalendar.m in Sources */,
 				1BBDC44018896EBC00EB2954 /* JYCalendarDataSource.m in Sources */,
-				1BBDC44D188A5A6600EB2954 /* JYCalendarWeekCell.m in Sources */,
 				1BBDC4301889318500EB2954 /* NSDate+JYCalendar.m in Sources */,
+				1BBDC45D188A6CD400EB2954 /* JYCalendarViewController.m in Sources */,
 				1BBDC40F188930CC00EB2954 /* JYViewController.m in Sources */,
 				1BBDC45A188A5C1400EB2954 /* JYCalendarDateView.m in Sources */,
 				1BBDC450188A5A7600EB2954 /* JYCalendarDetailCell.m in Sources */,
-				1BBDC453188A5ADA00EB2954 /* JYCalendarTableView.m in Sources */,
+				1BBAA5DD188A850400F9B74C /* JYCalendarMonthCell.m in Sources */,
 				1BBDC409188930CC00EB2954 /* JYAppDelegate.m in Sources */,
-				1BBDC456188A5B2400EB2954 /* JYCalendarViewController.m in Sources */,
+				1BBAA5E0188A87FA00F9B74C /* JYDateEntity.m in Sources */,
 				1BBDC43618896AB800EB2954 /* NSCalendar+JYCalendar.m in Sources */,
 				1BBDC44918897CF400EB2954 /* JYCalendarUtil.m in Sources */,
 			);
@@ -468,9 +523,11 @@
 		};
 		1BBDC428188930CC00EB2954 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79780C679AFB48739D4845C8 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JYCalendar/JYCalendar-Prefix.pch";
 				INFOPLIST_FILE = "JYCalendar/JYCalendar-Info.plist";
@@ -481,9 +538,11 @@
 		};
 		1BBDC429188930CC00EB2954 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79780C679AFB48739D4845C8 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JYCalendar/JYCalendar-Prefix.pch";
 				INFOPLIST_FILE = "JYCalendar/JYCalendar-Info.plist";
@@ -553,6 +612,7 @@
 				1BBDC429188930CC00EB2954 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1BBDC42A188930CC00EB2954 /* Build configuration list for PBXNativeTarget "JYCalendarTests" */ = {
 			isa = XCConfigurationList;
@@ -561,6 +621,7 @@
 				1BBDC42C188930CC00EB2954 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

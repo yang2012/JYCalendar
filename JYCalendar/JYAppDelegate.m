@@ -15,9 +15,12 @@
 {
     [self _initAppearance];
     
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[JYCalendarViewController alloc] init]];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = [[JYCalendarViewController alloc] init];
+    self.window.rootViewController = navigationController;
     self.window.backgroundColor = [UIColor whiteColor];
+    self.window.clipsToBounds =YES;
     [self.window makeKeyAndVisible];
     
     return YES;

@@ -1,0 +1,10 @@
+PODS:
+  - Reveal-iOS-SDK (1.0.3)
+
+DEPENDENCIES:
+  - Reveal-iOS-SDK
+
+SPEC CHECKSUMS:
+  Reveal-iOS-SDK: f2525cb560a564fdc086316e89ec45ced6977fd3
+
+COCOAPODS: 0.25.0

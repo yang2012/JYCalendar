@@ -7,12 +7,19 @@
 //
 
 #import "JYAppDelegate.h"
+#import "JYCalendarViewController.h"
 
 @implementation JYAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    [self _initAppearance];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = [[JYCalendarViewController alloc] init];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 							
@@ -41,6 +48,23 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)_initAppearance
+{
+    UIColor *byteClubBlue = [UIColor colorWithRed:61/255.0f
+                                            green:154/255.0f
+                                             blue:232/255.0f
+                                            alpha:1.0f];
+    
+    // Set appearance info
+    [[UITabBar appearance] setBarTintColor:byteClubBlue];
+    [[UINavigationBar appearance] setBarStyle:UIBarStyleBlackOpaque];
+    [[UINavigationBar appearance] setBarTintColor:byteClubBlue];
+    
+    [[UIToolbar appearance] setBarStyle:UIBarStyleBlackOpaque];
+    [[UIToolbar appearance] setBarTintColor:byteClubBlue];
+    
 }
 
 @end

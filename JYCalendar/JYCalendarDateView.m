@@ -11,6 +11,7 @@
 @interface JYCalendarDateView ()
 
 @property (nonatomic, strong) UILabel *labelView;
+@property (nonatomic, assign) BOOL showed;
 
 @end
 
@@ -23,6 +24,8 @@
         self.labelView = [[UILabel alloc] init];
         self.labelView.textAlignment = NSTextAlignmentCenter;
         [self addSubview:self.labelView];
+        
+        self.showed = NO;
         
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
         [self addGestureRecognizer:tapGesture];

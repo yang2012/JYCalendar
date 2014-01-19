@@ -69,12 +69,12 @@
     return [gregorian dateFromComponents:components];
 }
 
-- (NSUInteger)weekDay
+- (NSUInteger)week
 {
     return [[NSCalendar currentCalendar] ordinalityOfUnit:NSDayCalendarUnit inUnit:NSWeekCalendarUnit forDate:self];
 }
 
-- (NSString *)weekString {
+- (NSString *)weekDay {
     NSCalendar *calendar                = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *dateComponents    = [calendar components:NSCalendarUnitWeekday fromDate:self];
     switch (dateComponents.weekday) {

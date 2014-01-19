@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1BBAA5DD188A850400F9B74C /* JYCalendarMonthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBAA5DC188A850400F9B74C /* JYCalendarMonthCell.m */; };
 		1BBAA5E0188A87FA00F9B74C /* JYDateEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBAA5DF188A87FA00F9B74C /* JYDateEntity.m */; };
+		1BBAA5E4188BAFFB00F9B74C /* JYCalendarDateDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBAA5E3188BAFFB00F9B74C /* JYCalendarDateDetailView.m */; };
+		1BBAA5E7188BB14200F9B74C /* JYCalendarWeekView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBAA5E6188BB14200F9B74C /* JYCalendarWeekView.m */; };
+		1BBAA5EA188BC91A00F9B74C /* UIView+JYCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBAA5E9188BC91A00F9B74C /* UIView+JYCalendar.m */; };
 		1BBDC3F9188930CC00EB2954 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BBDC3F8188930CC00EB2954 /* Foundation.framework */; };
 		1BBDC3FB188930CC00EB2954 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BBDC3FA188930CC00EB2954 /* CoreGraphics.framework */; };
 		1BBDC3FD188930CC00EB2954 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BBDC3FC188930CC00EB2954 /* UIKit.framework */; };
@@ -28,7 +31,6 @@
 		1BBDC43618896AB800EB2954 /* NSCalendar+JYCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBDC43518896AB800EB2954 /* NSCalendar+JYCalendar.m */; };
 		1BBDC44018896EBC00EB2954 /* JYCalendarDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBDC43F18896EBC00EB2954 /* JYCalendarDataSource.m */; };
 		1BBDC44918897CF400EB2954 /* JYCalendarUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBDC44818897CF400EB2954 /* JYCalendarUtil.m */; };
-		1BBDC450188A5A7600EB2954 /* JYCalendarDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBDC44F188A5A7600EB2954 /* JYCalendarDetailCell.m */; };
 		1BBDC45A188A5C1400EB2954 /* JYCalendarDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBDC459188A5C1400EB2954 /* JYCalendarDateView.m */; };
 		1BBDC45D188A6CD400EB2954 /* JYCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBDC45C188A6CD400EB2954 /* JYCalendarViewController.m */; };
 		4B36B7CAAE734CCF95CDD0F2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F57C7011C3456592146F79 /* libPods.a */; };
@@ -49,6 +51,12 @@
 		1BBAA5DC188A850400F9B74C /* JYCalendarMonthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYCalendarMonthCell.m; sourceTree = "<group>"; };
 		1BBAA5DE188A87FA00F9B74C /* JYDateEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYDateEntity.h; sourceTree = "<group>"; };
 		1BBAA5DF188A87FA00F9B74C /* JYDateEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYDateEntity.m; sourceTree = "<group>"; };
+		1BBAA5E2188BAFFB00F9B74C /* JYCalendarDateDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYCalendarDateDetailView.h; sourceTree = "<group>"; };
+		1BBAA5E3188BAFFB00F9B74C /* JYCalendarDateDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYCalendarDateDetailView.m; sourceTree = "<group>"; };
+		1BBAA5E5188BB14200F9B74C /* JYCalendarWeekView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYCalendarWeekView.h; sourceTree = "<group>"; };
+		1BBAA5E6188BB14200F9B74C /* JYCalendarWeekView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYCalendarWeekView.m; sourceTree = "<group>"; };
+		1BBAA5E8188BC91A00F9B74C /* UIView+JYCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JYCalendar.h"; sourceTree = "<group>"; };
+		1BBAA5E9188BC91A00F9B74C /* UIView+JYCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JYCalendar.m"; sourceTree = "<group>"; };
 		1BBDC3F5188930CC00EB2954 /* JYCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JYCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BBDC3F8188930CC00EB2954 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1BBDC3FA188930CC00EB2954 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -78,8 +86,6 @@
 		1BBDC43F18896EBC00EB2954 /* JYCalendarDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYCalendarDataSource.m; sourceTree = "<group>"; };
 		1BBDC44718897CF400EB2954 /* JYCalendarUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYCalendarUtil.h; sourceTree = "<group>"; };
 		1BBDC44818897CF400EB2954 /* JYCalendarUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYCalendarUtil.m; sourceTree = "<group>"; };
-		1BBDC44E188A5A7600EB2954 /* JYCalendarDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYCalendarDetailCell.h; sourceTree = "<group>"; };
-		1BBDC44F188A5A7600EB2954 /* JYCalendarDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYCalendarDetailCell.m; sourceTree = "<group>"; };
 		1BBDC458188A5C1400EB2954 /* JYCalendarDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYCalendarDateView.h; sourceTree = "<group>"; };
 		1BBDC459188A5C1400EB2954 /* JYCalendarDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYCalendarDateView.m; sourceTree = "<group>"; };
 		1BBDC45B188A6CD400EB2954 /* JYCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYCalendarViewController.h; sourceTree = "<group>"; };
@@ -199,6 +205,8 @@
 				1BBDC4321889344D00EB2954 /* NSString+JYCalendar.m */,
 				1BBDC43418896AB800EB2954 /* NSCalendar+JYCalendar.h */,
 				1BBDC43518896AB800EB2954 /* NSCalendar+JYCalendar.m */,
+				1BBAA5E8188BC91A00F9B74C /* UIView+JYCalendar.h */,
+				1BBAA5E9188BC91A00F9B74C /* UIView+JYCalendar.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -222,8 +230,6 @@
 		1BBDC44A188A5A4A00EB2954 /* cells */ = {
 			isa = PBXGroup;
 			children = (
-				1BBDC44E188A5A7600EB2954 /* JYCalendarDetailCell.h */,
-				1BBDC44F188A5A7600EB2954 /* JYCalendarDetailCell.m */,
 				1BBAA5DB188A850400F9B74C /* JYCalendarMonthCell.h */,
 				1BBAA5DC188A850400F9B74C /* JYCalendarMonthCell.m */,
 			);
@@ -236,6 +242,10 @@
 				1BBDC44A188A5A4A00EB2954 /* cells */,
 				1BBDC458188A5C1400EB2954 /* JYCalendarDateView.h */,
 				1BBDC459188A5C1400EB2954 /* JYCalendarDateView.m */,
+				1BBAA5E2188BAFFB00F9B74C /* JYCalendarDateDetailView.h */,
+				1BBAA5E3188BAFFB00F9B74C /* JYCalendarDateDetailView.m */,
+				1BBAA5E5188BB14200F9B74C /* JYCalendarWeekView.h */,
+				1BBAA5E6188BB14200F9B74C /* JYCalendarWeekView.m */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -390,11 +400,13 @@
 				1BBDC405188930CC00EB2954 /* main.m in Sources */,
 				1BBDC4331889344D00EB2954 /* NSString+JYCalendar.m in Sources */,
 				1BBDC44018896EBC00EB2954 /* JYCalendarDataSource.m in Sources */,
+				1BBAA5EA188BC91A00F9B74C /* UIView+JYCalendar.m in Sources */,
 				1BBDC4301889318500EB2954 /* NSDate+JYCalendar.m in Sources */,
 				1BBDC45D188A6CD400EB2954 /* JYCalendarViewController.m in Sources */,
+				1BBAA5E7188BB14200F9B74C /* JYCalendarWeekView.m in Sources */,
 				1BBDC40F188930CC00EB2954 /* JYViewController.m in Sources */,
+				1BBAA5E4188BAFFB00F9B74C /* JYCalendarDateDetailView.m in Sources */,
 				1BBDC45A188A5C1400EB2954 /* JYCalendarDateView.m in Sources */,
-				1BBDC450188A5A7600EB2954 /* JYCalendarDetailCell.m in Sources */,
 				1BBAA5DD188A850400F9B74C /* JYCalendarMonthCell.m in Sources */,
 				1BBDC409188930CC00EB2954 /* JYAppDelegate.m in Sources */,
 				1BBAA5E0188A87FA00F9B74C /* JYDateEntity.m in Sources */,

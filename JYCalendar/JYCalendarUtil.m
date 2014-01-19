@@ -56,7 +56,7 @@
 
 + (NSUInteger)_numberOfDaysInPreviousPartialWeek:(NSDate *)date
 {
-    int num = [date weekDay] - 1;
+    int num = [date week] - 1;
     if (num == 0) {
         num = 7;
     }
@@ -69,7 +69,7 @@
     component.day                    = [date numberOfDaysInMonth];
     NSDate *lastDayOfTheMonth        = [[NSCalendar currentCalendar] dateFromComponents:component];
     
-    int num = 7 - [lastDayOfTheMonth weekDay];
+    int num = 7 - [lastDayOfTheMonth week];
     if (num == 0) {
         num = 7;
     }

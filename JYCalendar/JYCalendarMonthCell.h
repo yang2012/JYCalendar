@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JYCalendarDateView.h"
+#import "JYCalendarWeekView.h"
 
 @interface JYCalendarMonthCell : UICollectionViewCell
 
-- (void)setUpDatesForMonth:(NSArray *)dateEntities
-              withDelegate:(id<JYCalendarDateViewDelegate>)delegate;
+- (void)setUpDatesForMonth:(NSArray *)dateEntities;
 
 @end

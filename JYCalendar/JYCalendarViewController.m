@@ -9,12 +9,12 @@
 #import "JYCalendarViewController.h"
 #import "JYCalendarUtil.h"
 #import "JYCalendarMonthCell.h"
-#import "JYCalendarDetailCell.h"
+#import "JYDateEntity.h"
 #import "NSDate+JYCalendar.h"
 
 static NSString *kMonthCellIdentifier = @"JYCalendarWeekCell";
 
-@interface JYCalendarViewController () <JYCalendarDateViewDelegate>
+@interface JYCalendarViewController ()
 
 @property (nonatomic, strong) NSDate *currentDate;
 
@@ -101,7 +101,7 @@ static NSString *kMonthCellIdentifier = @"JYCalendarWeekCell";
             break;
     }
     
-    [cell setUpDatesForMonth:dateEntities withDelegate:self];
+    [cell setUpDatesForMonth:dateEntities];
     return cell;
 }
 
@@ -139,11 +139,6 @@ static NSString *kMonthCellIdentifier = @"JYCalendarWeekCell";
 
 #pragma mark - JYCalendarDateViewDelegate
 
-- (void)didTapAtdateView:(JYCalendarDateView *)dateView
-{
-    NSLog(@"%@", dateView.dateEntity.formatDate);
-}
-
 #pragma mark - Private methods
 
 - (NSArray *)_dateEntitesForMonth:(NSDate *)date
@@ -178,16 +173,6 @@ static NSString *kMonthCellIdentifier = @"JYCalendarWeekCell";
     }
     
     return dateEntities;
-}
-
-- (void)_showDetailView
-{
-    
-}
-
-- (void)_hideDetailView
-{
-    
 }
 
 @end

@@ -14,9 +14,9 @@
 - (NSInteger)month;
 - (NSInteger)day;
 - (NSInteger)hour;
+- (NSUInteger)week;
 
-- (NSString *)weekString;
-- (NSUInteger)weekDay;
+- (NSString *)weekDay;
 
 - (NSDate *)offsetDay:(int)numDays;
 

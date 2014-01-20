@@ -42,6 +42,9 @@ typedef enum {
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.animating = NO;
+        self.showedDate = nil;
+        self.showedWeekRow = 0;
         self.clipsToBounds = YES;
         
         [self _addSubviews];
@@ -53,32 +56,32 @@ typedef enum {
 {
     self.detailView = [[JYCalendarDateDetailView alloc] init];
     self.detailView.hidden = YES;
-    [self addSubview:self.detailView];
+    [self.contentView addSubview:self.detailView];
     
     self.firstWeekView = [[JYCalendarWeekView alloc] initWithWeekRow:1];
     self.firstWeekView.delegate = self;
     self.firstWeekView.tag = [self _tagForWeekView:1];
-    [self addSubview:self.firstWeekView];
+    [self.contentView addSubview:self.firstWeekView];
     
     self.secondWeekView = [[JYCalendarWeekView alloc] initWithWeekRow:2];
     self.secondWeekView.delegate = self;
     self.secondWeekView.tag = [self _tagForWeekView:2];
-    [self addSubview:self.secondWeekView];
+    [self.contentView addSubview:self.secondWeekView];
     
     self.thirdWeekView = [[JYCalendarWeekView alloc] initWithWeekRow:3];
     self.thirdWeekView.delegate = self;
     self.thirdWeekView.tag = [self _tagForWeekView:3];
-    [self addSubview:self.thirdWeekView];
+    [self.contentView addSubview:self.thirdWeekView];
     
     self.fourthWeekView = [[JYCalendarWeekView alloc] initWithWeekRow:4];
     self.fourthWeekView.delegate = self;
     self.fourthWeekView.tag = [self _tagForWeekView:4];
-    [self addSubview:self.fourthWeekView];
+    [self.contentView addSubview:self.fourthWeekView];
     
     self.fifthWeekView = [[JYCalendarWeekView alloc] initWithWeekRow:5];
     self.fifthWeekView.delegate = self;
     self.fifthWeekView.tag = [self _tagForWeekView:5];
-    [self addSubview:self.fifthWeekView];
+    [self.contentView addSubview:self.fifthWeekView];
 }
 
 - (void)layoutSubviews
@@ -98,7 +101,7 @@ typedef enum {
     self.detailView.frame = CGRectMake(0.0f, 0.0f, frame.size.width, 100.0f);
 }
 
-- (void)setUpDatesForMonth:(NSArray *)dateEntities
+- (void)setUpMonthWithDateEntities:(NSArray *)dateEntities
 {
     NSUInteger dateCount = dateEntities.count;
     NSInteger week = 1;
@@ -121,46 +124,70 @@ typedef enum {
 
 - (void)weekView:(JYCalendarWeekView *)weekView didTapDate:(NSDate *)date
 {
+    if ([self.delegate respondsToSelector:@selector(monthCell:didSelectDate:)]) {
+        JYDateEntity *dateEntity = [[JYDateEntity alloc] init];
+        dateEntity.date = date;
+        dateEntity.weekRow = weekView.weekRow;
+        [self.delegate monthCell:self didSelectDate:dateEntity];
+    }
+}
+
+- (void)toggleDetailViewForDate:(JYDateEntity *)dateEntity
+                     completion:(void (^)(BOOL))finishedBlock
+{
     if (self.animating) {
         // Ignore tap gesture when animating
         return;
     }
     
-    if (self.showedDate && [self.showedDate isEqualToDate:date]) {
-        [self _hideDetailView:nil];
+    if ([self.showedDate isEqualToDate:dateEntity.date]) {
+        [self _hideDetailView:finishedBlock];
     } else {
-        NSInteger weekRow = weekView.weekRow;
+        NSInteger weekRow = dateEntity.weekRow;
         NSInteger currentShowedWeekRow = self.showedWeekRow;
-
-        if (self.showedDate) {
-            if (weekRow != currentShowedWeekRow) {
-                // Check whether need to hide detail view firstly
-                [self _hideDetailView:^(BOOL finished) {
-                    [self _showDetailViewAtRow:weekRow];
-                }];
-            }
-        } else {
-            [self _showDetailViewAtRow:weekRow];
-        }
         
-        [self _updateDetailView:date];
+        if (weekRow != currentShowedWeekRow) {
+            // Check whether need to hide detail view firstly
+            [self _hideDetailView:^(BOOL finished) {
+                [self _showDetailView:dateEntity atRow:weekRow completion:finishedBlock];
+            }];
+        } else {
+            [self _showDetailView:dateEntity atRow:weekRow completion:finishedBlock];
+        }
     }
 }
 
-- (void)_showDetailViewAtRow:(NSInteger)row
+- (void)hideDetailViewWithCompletion:(void (^)(BOOL))finishedBlock
 {
+    [self _hideDetailView:finishedBlock];
+}
+
+- (void)_showDetailView:(JYDateEntity *)dateEntity
+                  atRow:(NSInteger)row
+             completion:(void (^)(BOOL finished))finishedBlock;
+{
+    self.showedDate = dateEntity.date;
+    
+    NSArray *events = nil;
+    if ([self.delegate respondsToSelector:@selector(monthCell:eventsForDate:)]) {
+        events = [self.delegate monthCell:self eventsForDate:dateEntity];
+    } else {
+        events = [NSArray array];
+    }
+    
+    [self _showAtRow:row completion:finishedBlock];
+}
+
+- (void)_showAtRow:(NSInteger)row
+         completion:(void (^)(BOOL finished))finishedBlock;
+{
+    if (row == self.showedWeekRow) {
+        // if at the same row, it need not to slide again
+        finishedBlock(YES);
+        return;
+    }
+    
     self.showedWeekRow = row;
-    [self _slideWithBaseRow:row];
-}
-
-- (void)_updateDetailView:(NSDate *)date
-{
-    self.showedDate = date;
-    NSLog(@"%@", date);
-}
-
-- (void)_slideWithBaseRow:(NSInteger)row
-{
     self.animating = YES;
     
     CGFloat heightOfDetailView = self.detailView.bounds.size.height;
@@ -212,7 +239,7 @@ typedef enum {
     
     self.detailView.hidden = NO;
     
-    [UIView animateWithDuration:1.0 animations:^{
+    [UIView animateWithDuration:0.3 animations:^{
         self.firstWeekView.y  = yPositionOfFirstWeek;
         self.secondWeekView.y = yPositionOfSecondWeek;
         self.thirdWeekView.y  = yPositionOfThirdWeek;
@@ -220,15 +247,18 @@ typedef enum {
         self.fifthWeekView.y  = yPositionOfFifthWeek;
     } completion:^(BOOL finished) {
         self.animating = NO;
+        
+        if (finishedBlock) {
+            finishedBlock(YES);
+        }
     }];
 }
 
-- (void)_hideDetailView:(void (^)(BOOL finished))finishedBlock
+- (void)_hideDetailView:(void (^)(BOOL showed))finishedBlock
 {
-    self.showedDate = nil;
     self.animating = YES;
-    [UIView animateWithDuration:1.0 animations:^{
-        CGFloat inset = 2.0f;
+    [UIView animateWithDuration:0.3 animations:^{
+        CGFloat inset = 0.0f;
         CGFloat heightOfWeekView = self.frame.size.height / kNumOfWeek;
         
         for (NSUInteger week = 1; week < kNumOfWeek + 1; week++) {
@@ -238,11 +268,12 @@ typedef enum {
         }
     } completion:^(BOOL finished) {
         self.animating = NO;
-
+        self.showedDate = nil;
+        self.showedWeekRow = 0;
         self.detailView.hidden = YES;
 
         if (finishedBlock) {
-            finishedBlock(finished);
+            finishedBlock(NO);
         }
     }];
 }

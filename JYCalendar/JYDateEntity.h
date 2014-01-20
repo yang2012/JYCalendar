@@ -12,6 +12,7 @@
 
 @property (nonatomic, assign) BOOL visible;
 @property (nonatomic, strong) NSDate *date;
+@property (nonatomic, assign) NSInteger weekRow;
 @property (nonatomic, readonly) NSString *formatDate;
 
 @end

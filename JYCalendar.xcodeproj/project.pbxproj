@@ -12,6 +12,15 @@
 		1BBAA5E4188BAFFB00F9B74C /* JYCalendarDateDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBAA5E3188BAFFB00F9B74C /* JYCalendarDateDetailView.m */; };
 		1BBAA5E7188BB14200F9B74C /* JYCalendarWeekView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBAA5E6188BB14200F9B74C /* JYCalendarWeekView.m */; };
 		1BBAA5EA188BC91A00F9B74C /* UIView+JYCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBAA5E9188BC91A00F9B74C /* UIView+JYCalendar.m */; };
+		1BBAA5ED188BF6EB00F9B74C /* JYCalendarMonthPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBAA5EC188BF6EB00F9B74C /* JYCalendarMonthPickerView.m */; };
+		1BBAA5F4188BFA9C00F9B74C /* comm_btn_popup_next_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BBAA5F0188BFA9C00F9B74C /* comm_btn_popup_next_normal@2x.png */; };
+		1BBAA5F5188BFA9C00F9B74C /* comm_btn_popup_next_press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BBAA5F1188BFA9C00F9B74C /* comm_btn_popup_next_press@2x.png */; };
+		1BBAA5F6188BFA9C00F9B74C /* comm_btn_popup_prev_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BBAA5F2188BFA9C00F9B74C /* comm_btn_popup_prev_normal@2x.png */; };
+		1BBAA5F7188BFA9C00F9B74C /* comm_btn_popup_prev_press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BBAA5F3188BFA9C00F9B74C /* comm_btn_popup_prev_press@2x.png */; };
+		1BBAA5FC188BFE1E00F9B74C /* JYCalendarMonthPickerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBAA5FB188BFE1E00F9B74C /* JYCalendarMonthPickerViewCell.m */; };
+		1BBAA602188C051600F9B74C /* comm_bg_picker_time@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BBAA601188C051600F9B74C /* comm_bg_picker_time@2x.png */; };
+		1BBAA605188C0D1E00F9B74C /* JYCalendarTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBAA604188C0D1E00F9B74C /* JYCalendarTitleView.m */; };
+		1BBAA609188D13F600F9B74C /* JYEventEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBAA608188D13F600F9B74C /* JYEventEntity.m */; };
 		1BBDC3F9188930CC00EB2954 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BBDC3F8188930CC00EB2954 /* Foundation.framework */; };
 		1BBDC3FB188930CC00EB2954 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BBDC3FA188930CC00EB2954 /* CoreGraphics.framework */; };
 		1BBDC3FD188930CC00EB2954 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BBDC3FC188930CC00EB2954 /* UIKit.framework */; };
@@ -57,6 +66,19 @@
 		1BBAA5E6188BB14200F9B74C /* JYCalendarWeekView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYCalendarWeekView.m; sourceTree = "<group>"; };
 		1BBAA5E8188BC91A00F9B74C /* UIView+JYCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JYCalendar.h"; sourceTree = "<group>"; };
 		1BBAA5E9188BC91A00F9B74C /* UIView+JYCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JYCalendar.m"; sourceTree = "<group>"; };
+		1BBAA5EB188BF6EB00F9B74C /* JYCalendarMonthPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYCalendarMonthPickerView.h; sourceTree = "<group>"; };
+		1BBAA5EC188BF6EB00F9B74C /* JYCalendarMonthPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYCalendarMonthPickerView.m; sourceTree = "<group>"; };
+		1BBAA5F0188BFA9C00F9B74C /* comm_btn_popup_next_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comm_btn_popup_next_normal@2x.png"; sourceTree = "<group>"; };
+		1BBAA5F1188BFA9C00F9B74C /* comm_btn_popup_next_press@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comm_btn_popup_next_press@2x.png"; sourceTree = "<group>"; };
+		1BBAA5F2188BFA9C00F9B74C /* comm_btn_popup_prev_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comm_btn_popup_prev_normal@2x.png"; sourceTree = "<group>"; };
+		1BBAA5F3188BFA9C00F9B74C /* comm_btn_popup_prev_press@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comm_btn_popup_prev_press@2x.png"; sourceTree = "<group>"; };
+		1BBAA5FA188BFE1E00F9B74C /* JYCalendarMonthPickerViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYCalendarMonthPickerViewCell.h; sourceTree = "<group>"; };
+		1BBAA5FB188BFE1E00F9B74C /* JYCalendarMonthPickerViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYCalendarMonthPickerViewCell.m; sourceTree = "<group>"; };
+		1BBAA601188C051600F9B74C /* comm_bg_picker_time@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comm_bg_picker_time@2x.png"; sourceTree = "<group>"; };
+		1BBAA603188C0D1E00F9B74C /* JYCalendarTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYCalendarTitleView.h; sourceTree = "<group>"; };
+		1BBAA604188C0D1E00F9B74C /* JYCalendarTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYCalendarTitleView.m; sourceTree = "<group>"; };
+		1BBAA607188D13F600F9B74C /* JYEventEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYEventEntity.h; sourceTree = "<group>"; };
+		1BBAA608188D13F600F9B74C /* JYEventEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYEventEntity.m; sourceTree = "<group>"; };
 		1BBDC3F5188930CC00EB2954 /* JYCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JYCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BBDC3F8188930CC00EB2954 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1BBDC3FA188930CC00EB2954 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -119,6 +141,65 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1BBAA5EE188BFA8000F9B74C /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				1BBAA5EF188BFA8800F9B74C /* Images */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		1BBAA5EF188BFA8800F9B74C /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				1BBAA5F0188BFA9C00F9B74C /* comm_btn_popup_next_normal@2x.png */,
+				1BBAA5F1188BFA9C00F9B74C /* comm_btn_popup_next_press@2x.png */,
+				1BBAA5F2188BFA9C00F9B74C /* comm_btn_popup_prev_normal@2x.png */,
+				1BBAA5F3188BFA9C00F9B74C /* comm_btn_popup_prev_press@2x.png */,
+				1BBAA601188C051600F9B74C /* comm_bg_picker_time@2x.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		1BBAA5F8188BFDE800F9B74C /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				1BBAA5DB188A850400F9B74C /* JYCalendarMonthCell.h */,
+				1BBAA5DC188A850400F9B74C /* JYCalendarMonthCell.m */,
+				1BBAA5E2188BAFFB00F9B74C /* JYCalendarDateDetailView.h */,
+				1BBAA5E3188BAFFB00F9B74C /* JYCalendarDateDetailView.m */,
+				1BBDC458188A5C1400EB2954 /* JYCalendarDateView.h */,
+				1BBDC459188A5C1400EB2954 /* JYCalendarDateView.m */,
+				1BBAA5E5188BB14200F9B74C /* JYCalendarWeekView.h */,
+				1BBAA5E6188BB14200F9B74C /* JYCalendarWeekView.m */,
+				1BBAA603188C0D1E00F9B74C /* JYCalendarTitleView.h */,
+				1BBAA604188C0D1E00F9B74C /* JYCalendarTitleView.m */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		1BBAA5F9188BFDF000F9B74C /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				1BBAA5EB188BF6EB00F9B74C /* JYCalendarMonthPickerView.h */,
+				1BBAA5EC188BF6EB00F9B74C /* JYCalendarMonthPickerView.m */,
+				1BBAA5FA188BFE1E00F9B74C /* JYCalendarMonthPickerViewCell.h */,
+				1BBAA5FB188BFE1E00F9B74C /* JYCalendarMonthPickerViewCell.m */,
+			);
+			name = Header;
+			sourceTree = "<group>";
+		};
+		1BBAA606188D13BD00F9B74C /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				1BBAA5DE188A87FA00F9B74C /* JYDateEntity.h */,
+				1BBAA5DF188A87FA00F9B74C /* JYDateEntity.m */,
+				1BBAA607188D13F600F9B74C /* JYEventEntity.h */,
+				1BBAA608188D13F600F9B74C /* JYEventEntity.m */,
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
 		1BBDC3EC188930CC00EB2954 = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +235,7 @@
 		1BBDC3FE188930CC00EB2954 /* JYCalendar */ = {
 			isa = PBXGroup;
 			children = (
+				1BBAA5EE188BFA8000F9B74C /* Sources */,
 				1BBDC43718896B6800EB2954 /* Classes */,
 				1BBDC42D1889314900EB2954 /* Categories */,
 				1BBDC407188930CC00EB2954 /* JYAppDelegate.h */,
@@ -214,40 +296,25 @@
 		1BBDC43718896B6800EB2954 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				1BBDC457188A5BF800EB2954 /* views */,
+				1BBAA606188D13BD00F9B74C /* Entities */,
+				1BBDC457188A5BF800EB2954 /* Views */,
 				1BBDC43E18896EBC00EB2954 /* JYCalendarDataSource.h */,
 				1BBDC43F18896EBC00EB2954 /* JYCalendarDataSource.m */,
 				1BBDC44718897CF400EB2954 /* JYCalendarUtil.h */,
 				1BBDC44818897CF400EB2954 /* JYCalendarUtil.m */,
 				1BBDC45B188A6CD400EB2954 /* JYCalendarViewController.h */,
 				1BBDC45C188A6CD400EB2954 /* JYCalendarViewController.m */,
-				1BBAA5DE188A87FA00F9B74C /* JYDateEntity.h */,
-				1BBAA5DF188A87FA00F9B74C /* JYDateEntity.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
 		};
-		1BBDC44A188A5A4A00EB2954 /* cells */ = {
+		1BBDC457188A5BF800EB2954 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1BBAA5DB188A850400F9B74C /* JYCalendarMonthCell.h */,
-				1BBAA5DC188A850400F9B74C /* JYCalendarMonthCell.m */,
+				1BBAA5F9188BFDF000F9B74C /* Header */,
+				1BBAA5F8188BFDE800F9B74C /* Main */,
 			);
-			name = cells;
-			sourceTree = "<group>";
-		};
-		1BBDC457188A5BF800EB2954 /* views */ = {
-			isa = PBXGroup;
-			children = (
-				1BBDC44A188A5A4A00EB2954 /* cells */,
-				1BBDC458188A5C1400EB2954 /* JYCalendarDateView.h */,
-				1BBDC459188A5C1400EB2954 /* JYCalendarDateView.m */,
-				1BBAA5E2188BAFFB00F9B74C /* JYCalendarDateDetailView.h */,
-				1BBAA5E3188BAFFB00F9B74C /* JYCalendarDateDetailView.m */,
-				1BBAA5E5188BB14200F9B74C /* JYCalendarWeekView.h */,
-				1BBAA5E6188BB14200F9B74C /* JYCalendarWeekView.m */,
-			);
-			name = views;
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,8 +397,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BBAA5F5188BFA9C00F9B74C /* comm_btn_popup_next_press@2x.png in Resources */,
 				1BBDC411188930CC00EB2954 /* Images.xcassets in Resources */,
+				1BBAA602188C051600F9B74C /* comm_bg_picker_time@2x.png in Resources */,
+				1BBAA5F4188BFA9C00F9B74C /* comm_btn_popup_next_normal@2x.png in Resources */,
+				1BBAA5F6188BFA9C00F9B74C /* comm_btn_popup_prev_normal@2x.png in Resources */,
 				1BBDC403188930CC00EB2954 /* InfoPlist.strings in Resources */,
+				1BBAA5F7188BFA9C00F9B74C /* comm_btn_popup_prev_press@2x.png in Resources */,
 				1BBDC40C188930CC00EB2954 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -399,6 +471,8 @@
 			files = (
 				1BBDC405188930CC00EB2954 /* main.m in Sources */,
 				1BBDC4331889344D00EB2954 /* NSString+JYCalendar.m in Sources */,
+				1BBAA605188C0D1E00F9B74C /* JYCalendarTitleView.m in Sources */,
+				1BBAA5ED188BF6EB00F9B74C /* JYCalendarMonthPickerView.m in Sources */,
 				1BBDC44018896EBC00EB2954 /* JYCalendarDataSource.m in Sources */,
 				1BBAA5EA188BC91A00F9B74C /* UIView+JYCalendar.m in Sources */,
 				1BBDC4301889318500EB2954 /* NSDate+JYCalendar.m in Sources */,
@@ -409,8 +483,10 @@
 				1BBDC45A188A5C1400EB2954 /* JYCalendarDateView.m in Sources */,
 				1BBAA5DD188A850400F9B74C /* JYCalendarMonthCell.m in Sources */,
 				1BBDC409188930CC00EB2954 /* JYAppDelegate.m in Sources */,
+				1BBAA5FC188BFE1E00F9B74C /* JYCalendarMonthPickerViewCell.m in Sources */,
 				1BBAA5E0188A87FA00F9B74C /* JYDateEntity.m in Sources */,
 				1BBDC43618896AB800EB2954 /* NSCalendar+JYCalendar.m in Sources */,
+				1BBAA609188D13F600F9B74C /* JYEventEntity.m in Sources */,
 				1BBDC44918897CF400EB2954 /* JYCalendarUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

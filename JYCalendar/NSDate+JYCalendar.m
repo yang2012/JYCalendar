@@ -74,50 +74,88 @@
     return [[NSCalendar currentCalendar] ordinalityOfUnit:NSDayCalendarUnit inUnit:NSWeekCalendarUnit forDate:self];
 }
 
-- (NSString *)weekDay {
+- (NSString *)weekDayName {
     NSCalendar *calendar                = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *dateComponents    = [calendar components:NSCalendarUnitWeekday fromDate:self];
+    NSString *name = @"";
     switch (dateComponents.weekday) {
-        case 1: {
-            return NSLocalizedString(@"sunday", @"");
-        }
+        case 1:
+            name = NSLocalizedString(@"sunday", @"");
             break;
-            
-        case 2: {
-            return NSLocalizedString(@"monday", @"");
-        }
+        case 2:
+            name = NSLocalizedString(@"monday", @"");
             break;
-            
-        case 3: {
-            return NSLocalizedString(@"tuesday", @"");
-        }
+        case 3:
+            name = NSLocalizedString(@"tuesday", @"");
             break;
-            
-        case 4: {
-            return NSLocalizedString(@"wednesday", @"");
-        }
+        case 4:
+            name = NSLocalizedString(@"wednesday", @"");
             break;
-            
-        case 5: {
-            return NSLocalizedString(@"thursday", @"");
-        }
+        case 5:
+            name = NSLocalizedString(@"thursday", @"");
             break;
-            
-        case 6: {
-            return NSLocalizedString(@"friday", @"");
-        }
+        case 6:
+            name = NSLocalizedString(@"friday", @"");
             break;
-            
-        case 7: {
-            return NSLocalizedString(@"saturday", @"");
-        }
+        case 7:
+            name = NSLocalizedString(@"saturday", @"");
             break;
-            
         default:
+            name = @"";
             break;
     }
     
-    return @"";
+    return name;
+}
+
+- (NSString *)monthName
+{
+    NSCalendar *calendar                = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *dateComponents    = [calendar components:NSCalendarUnitMonth fromDate:self];
+    NSString *name = @"";
+    switch (dateComponents.month) {
+        case 1:
+            name = NSLocalizedString(@"Jan", @"");
+            break;
+        case 2:
+            name = NSLocalizedString(@"Feb", @"");
+            break;
+        case 3:
+            name = NSLocalizedString(@"Mar", @"");
+            break;
+        case 4:
+            name = NSLocalizedString(@"Apr", @"");
+            break;
+        case 5:
+            name = NSLocalizedString(@"May", @"");
+            break;
+        case 6:
+            name = NSLocalizedString(@"Jun", @"");
+            break;
+        case 7:
+            name = NSLocalizedString(@"Jul", @"");
+            break;
+        case 8:
+            name = NSLocalizedString(@"Aug", @"");
+            break;
+        case 9:
+            name = NSLocalizedString(@"Sep", @"");
+            break;
+        case 10:
+            name = NSLocalizedString(@"Oct", @"");
+            break;
+        case 11:
+            name = NSLocalizedString(@"Nov", @"");
+            break;
+        case 12:
+            name = NSLocalizedString(@"Dec", @"");
+            break;
+        default:
+            name = @"";
+            break;
+    }
+    
+    return name;
 }
 
 - (NSString *)description:(NSString *)format {
@@ -234,6 +272,20 @@
 {
     NSDateComponents *component         = [[NSDateComponents alloc] init];
     component.month                     = 1;
+    return [[NSCalendar currentCalendar] dateByAddingComponents:component toDate:self options:0];
+}
+
+- (NSDate *)dateByMovingToPreviousYear
+{
+    NSDateComponents *component         = [[NSDateComponents alloc] init];
+    component.year                      = -1;
+    return [[NSCalendar currentCalendar] dateByAddingComponents:component toDate:self options:0];
+}
+
+- (NSDate *)dateByMovingToNextYear
+{
+    NSDateComponents *component         = [[NSDateComponents alloc] init];
+    component.year                      = 1;
     return [[NSCalendar currentCalendar] dateByAddingComponents:component toDate:self options:0];
 }
 

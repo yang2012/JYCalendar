@@ -53,7 +53,7 @@
     [super layoutSubviews];
     CGRect frame = self.bounds;
     
-    CGFloat inset            = 2.0f;
+    CGFloat inset            = 0.0f;
     CGFloat widthOfDateView  = frame.size.width / 7.0;
     CGFloat heightOfDateView = frame.size.height;
     

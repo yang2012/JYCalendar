@@ -16,7 +16,8 @@
 - (NSInteger)hour;
 - (NSUInteger)week;
 
-- (NSString *)weekDay;
+- (NSString *)weekDayName;
+- (NSString *)monthName;
 
 - (NSDate *)offsetDay:(int)numDays;
 
@@ -43,5 +44,8 @@
 - (NSDate *)firstDateOfTheMonth;
 - (NSDate *)dateByMovingToPreviousMonth;
 - (NSDate *)dateByMovingToNextMonth;
+
+- (NSDate *)dateByMovingToPreviousYear;
+- (NSDate *)dateByMovingToNextYear;
 
 @end

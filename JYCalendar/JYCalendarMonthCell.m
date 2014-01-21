@@ -12,8 +12,6 @@
 #import "NSDate+JYCalendar.h"
 #import "UIView+JYCalendar.h"
 
-static const NSInteger kNumOfWeek = 5;
-
 typedef enum {
     JYSlideDirectionTop,
     JYSlideDirectionDown,
@@ -21,18 +19,18 @@ typedef enum {
     JYSlideDirectionNone,
 } JYSlideDirection;
 
+static NSInteger kMaxWeekCount = 6;
+
 @interface JYCalendarMonthCell () <JYCalendarWeekViewDelegate>
 
 @property (nonatomic, assign) BOOL animating;
+
 @property (nonatomic, strong) NSDate *showedDate;
 @property (nonatomic, assign) NSInteger showedWeekRow;
 @property (nonatomic, strong) JYCalendarDateDetailView *detailView;
 
-@property (nonatomic, strong) JYCalendarWeekView *firstWeekView;
-@property (nonatomic, strong) JYCalendarWeekView *secondWeekView;
-@property (nonatomic, strong) JYCalendarWeekView *thirdWeekView;
-@property (nonatomic, strong) JYCalendarWeekView *fourthWeekView;
-@property (nonatomic, strong) JYCalendarWeekView *fifthWeekView;
+@property (nonatomic, strong) NSMutableArray *weekViews;
+@property (nonatomic, assign) NSInteger realWeekCount;
 
 @end
 
@@ -42,12 +40,12 @@ typedef enum {
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.animating = NO;
-        self.showedDate = nil;
+        [self _addSubviews];
+        
+        self.animating     = NO;
+        self.showedDate    = nil;
         self.showedWeekRow = 0;
         self.clipsToBounds = YES;
-        
-        [self _addSubviews];
     }
     return self;
 }
@@ -58,30 +56,14 @@ typedef enum {
     self.detailView.hidden = YES;
     [self.contentView addSubview:self.detailView];
     
-    self.firstWeekView = [[JYCalendarWeekView alloc] initWithWeekRow:1];
-    self.firstWeekView.delegate = self;
-    self.firstWeekView.tag = [self _tagForWeekView:1];
-    [self.contentView addSubview:self.firstWeekView];
-    
-    self.secondWeekView = [[JYCalendarWeekView alloc] initWithWeekRow:2];
-    self.secondWeekView.delegate = self;
-    self.secondWeekView.tag = [self _tagForWeekView:2];
-    [self.contentView addSubview:self.secondWeekView];
-    
-    self.thirdWeekView = [[JYCalendarWeekView alloc] initWithWeekRow:3];
-    self.thirdWeekView.delegate = self;
-    self.thirdWeekView.tag = [self _tagForWeekView:3];
-    [self.contentView addSubview:self.thirdWeekView];
-    
-    self.fourthWeekView = [[JYCalendarWeekView alloc] initWithWeekRow:4];
-    self.fourthWeekView.delegate = self;
-    self.fourthWeekView.tag = [self _tagForWeekView:4];
-    [self.contentView addSubview:self.fourthWeekView];
-    
-    self.fifthWeekView = [[JYCalendarWeekView alloc] initWithWeekRow:5];
-    self.fifthWeekView.delegate = self;
-    self.fifthWeekView.tag = [self _tagForWeekView:5];
-    [self.contentView addSubview:self.fifthWeekView];
+    self.weekViews = [NSMutableArray arrayWithCapacity:kMaxWeekCount];
+    for (NSInteger week = 0; week < kMaxWeekCount; week++) {
+        JYCalendarWeekView *weekView = [[JYCalendarWeekView alloc] initWithWeekRow:week + 1];
+        weekView.delegate = self;
+        [self.contentView addSubview:weekView];
+        
+        [self.weekViews addObject:weekView];
+    }
 }
 
 - (void)layoutSubviews
@@ -90,12 +72,11 @@ typedef enum {
     CGRect frame = self.bounds;
     
     CGFloat widthOfWeekView = frame.size.width;
-    CGFloat heightOfWeekView = frame.size.height / kNumOfWeek;
+    CGFloat heightOfWeekView = frame.size.height / self.realWeekCount;
     
-    for (NSUInteger week = 1; week < kNumOfWeek + 1; week++) {
-        NSInteger tag = [self _tagForWeekView:week];
-        UIView *view = [self viewWithTag:tag];
-        view.frame = CGRectMake(0.0f, heightOfWeekView * (week - 1), widthOfWeekView, heightOfWeekView);
+    for (NSUInteger index = 0; index < kMaxWeekCount; index++) {
+        UIView *view = self.weekViews[index];
+        view.frame = CGRectMake(0.0f, heightOfWeekView * index, widthOfWeekView, heightOfWeekView);
     }
     
     self.detailView.frame = CGRectMake(0.0f, 0.0f, frame.size.width, 100.0f);
@@ -104,22 +85,25 @@ typedef enum {
 - (void)setUpMonthWithDateEntities:(NSArray *)dateEntities
 {
     NSUInteger dateCount = dateEntities.count;
-    NSInteger week = 1;
+    self.realWeekCount = dateEntities.count / 7;
+
+    NSInteger weekIndex = 0;
     NSMutableArray *datesForWeek = [NSMutableArray arrayWithCapacity:7];
     for (NSUInteger date = 1; date < dateCount + 1; date++) {
         JYDateEntity *dateEntity = dateEntities[date - 1];
         [datesForWeek addObject:dateEntity];
         
         if (datesForWeek.count == 7) {
-            NSInteger tag = [self _tagForWeekView:week];
-            JYCalendarWeekView *weekView = (JYCalendarWeekView *)[self viewWithTag:tag];
+            JYCalendarWeekView *weekView = (JYCalendarWeekView *)self.weekViews[weekIndex];
             [weekView setUpDates:datesForWeek];
             
             // Clear for next week
             [datesForWeek removeAllObjects];
-            week++;
+            weekIndex++;
         }
     }
+    
+    [self setNeedsLayout];
 }
 
 - (void)weekView:(JYCalendarWeekView *)weekView didTapDate:(NSDate *)date
@@ -193,58 +177,67 @@ typedef enum {
     CGFloat heightOfDetailView = self.detailView.bounds.size.height;
     CGFloat halfHeightOfDetailView = heightOfDetailView / 2;
     
-    CGFloat yPositionOfFirstWeek, yPositionOfSecondWeek, yPositionOfThirdWeek, yPositionOfFourthWeek, yPositionOfFifthWeek;
-    
-    if (row == 1) {
-        yPositionOfFirstWeek = self.firstWeekView.y;
-        yPositionOfSecondWeek = self.secondWeekView.y + heightOfDetailView;
-        yPositionOfThirdWeek = self.thirdWeekView.y + heightOfDetailView;
-        yPositionOfFourthWeek = self.fourthWeekView.y + heightOfDetailView;
-        yPositionOfFifthWeek = self.fifthWeekView.y + heightOfDetailView;
+    NSMutableArray *newYPositions = [NSMutableArray arrayWithCapacity:kMaxWeekCount];
+    NSInteger middleRow = lroundf(self.realWeekCount / 2.0);
+    if (row < middleRow) {
+        for (NSUInteger index = 0; index < kMaxWeekCount; index++) {
+            JYCalendarWeekView *weekView = (JYCalendarWeekView *)self.weekViews[index];
+            if (index + 1 <= row) {
+                [newYPositions addObject:@(weekView.y)];
+            } else {
+                [newYPositions addObject:@(weekView.y + heightOfDetailView)];
+            }
+        }
         
-        self.detailView.y = self.firstWeekView.y + self.firstWeekView.height;
-    } else if (row == 2) {
-        yPositionOfFirstWeek = self.firstWeekView.y;
-        yPositionOfSecondWeek = self.secondWeekView.y;
-        yPositionOfThirdWeek = self.thirdWeekView.y + heightOfDetailView;
-        yPositionOfFourthWeek = self.fourthWeekView.y + heightOfDetailView;
-        yPositionOfFifthWeek = self.fifthWeekView.y + heightOfDetailView;
+        JYCalendarWeekView *anchorView = (JYCalendarWeekView *)self.weekViews[row - 1];
+        self.detailView.y = anchorView.y + anchorView.height;
+    } else if ((self.realWeekCount % 2 == 0 && (row == middleRow || row == middleRow + 1))
+               || (self.realWeekCount % 2 != 0 && (row == middleRow))
+               ) {
+        for (NSUInteger index = 0; index < kMaxWeekCount; index++) {
+            JYCalendarWeekView *weekView = (JYCalendarWeekView *)self.weekViews[index];
+            if (index + 1 <= row) {
+                [newYPositions addObject:@(weekView.y - halfHeightOfDetailView)];
+            } else {
+                [newYPositions addObject:@(weekView.y + halfHeightOfDetailView)];
+            }
+        }
         
-        self.detailView.y = self.secondWeekView.y + self.secondWeekView.height;
-    } else if (row == 3) {
-        yPositionOfFirstWeek = self.firstWeekView.y - halfHeightOfDetailView;
-        yPositionOfSecondWeek = self.secondWeekView.y - halfHeightOfDetailView;
-        yPositionOfThirdWeek = self.thirdWeekView.y - halfHeightOfDetailView;
-        yPositionOfFourthWeek = self.fourthWeekView.y + halfHeightOfDetailView;
-        yPositionOfFifthWeek = self.fifthWeekView.y + halfHeightOfDetailView;
+        JYCalendarWeekView *anchorView = (JYCalendarWeekView *)self.weekViews[row];
+        self.detailView.y = anchorView.y - halfHeightOfDetailView;
+    } else if (row != self.realWeekCount) {
+        for (NSUInteger index = 0; index < kMaxWeekCount; index++) {
+            JYCalendarWeekView *weekView = (JYCalendarWeekView *)self.weekViews[index];
+            if (index + 1 > row) {
+                [newYPositions addObject:@(weekView.y)];
+            } else {
+                [newYPositions addObject:@(weekView.y - heightOfDetailView)];
+            }
+        }
         
-        self.detailView.y = self.fourthWeekView.y - halfHeightOfDetailView;
-    } else if (row == 4) {
-        yPositionOfFirstWeek = self.firstWeekView.y - heightOfDetailView;
-        yPositionOfSecondWeek = self.secondWeekView.y - heightOfDetailView;
-        yPositionOfThirdWeek = self.thirdWeekView.y - heightOfDetailView;
-        yPositionOfFourthWeek = self.fourthWeekView.y - heightOfDetailView;
-        yPositionOfFifthWeek = self.fifthWeekView.y;
-        
-        self.detailView.y = self.fifthWeekView.y - self.fourthWeekView.height;
+        JYCalendarWeekView *anchorView = (JYCalendarWeekView *)self.weekViews[row];
+        self.detailView.y = anchorView.y - heightOfDetailView;
     } else {
-        yPositionOfFirstWeek = self.firstWeekView.y - heightOfDetailView;
-        yPositionOfSecondWeek = self.secondWeekView.y - heightOfDetailView;
-        yPositionOfThirdWeek = self.thirdWeekView.y - heightOfDetailView;
-        yPositionOfFourthWeek = self.fourthWeekView.y - heightOfDetailView;
-        yPositionOfFifthWeek = self.fifthWeekView.y - heightOfDetailView;
+        for (NSUInteger index = 0; index < self.realWeekCount; index++) {
+            JYCalendarWeekView *weekView = (JYCalendarWeekView *)self.weekViews[index];
+            [newYPositions addObject:@(weekView.y - heightOfDetailView)];
+        }
+        
+        if (self.realWeekCount != kMaxWeekCount) {
+            JYCalendarWeekView *extraWeekView = (JYCalendarWeekView *)self.weekViews[kMaxWeekCount - 1];
+            [newYPositions addObject:@(extraWeekView.y)];
+        }
         
         self.detailView.y = self.height - heightOfDetailView;
     }
-    
+
     self.detailView.hidden = NO;
     
     [UIView animateWithDuration:0.3 animations:^{
-        self.firstWeekView.y  = yPositionOfFirstWeek;
-        self.secondWeekView.y = yPositionOfSecondWeek;
-        self.thirdWeekView.y  = yPositionOfThirdWeek;
-        self.fourthWeekView.y = yPositionOfFourthWeek;
-        self.fifthWeekView.y  = yPositionOfFifthWeek;
+        for (NSInteger index = 0; index < kMaxWeekCount; index++) {
+            JYCalendarWeekView *weekView = (JYCalendarWeekView *)self.weekViews[index];
+            weekView.y = [(NSNumber *)newYPositions[index] floatValue];
+        }
     } completion:^(BOOL finished) {
         self.animating = NO;
         
@@ -259,12 +252,11 @@ typedef enum {
     self.animating = YES;
     [UIView animateWithDuration:0.3 animations:^{
         CGFloat inset = 0.0f;
-        CGFloat heightOfWeekView = self.frame.size.height / kNumOfWeek;
+        CGFloat heightOfWeekView = self.frame.size.height / self.realWeekCount;
         
-        for (NSUInteger week = 1; week < kNumOfWeek + 1; week++) {
-            NSInteger tag = [self _tagForWeekView:week];
-            UIView *view = [self viewWithTag:tag];
-            view.y = inset + heightOfWeekView * (week - 1);
+        for (NSUInteger index = 0; index < kMaxWeekCount; index++) {
+            UIView *view = self.weekViews[index];
+            view.y = inset + heightOfWeekView * index;
         }
     } completion:^(BOOL finished) {
         self.animating = NO;
@@ -276,11 +268,6 @@ typedef enum {
             finishedBlock(NO);
         }
     }];
-}
-
-- (NSInteger)_tagForWeekView:(NSUInteger)week;
-{
-    return week;
 }
 
 @end

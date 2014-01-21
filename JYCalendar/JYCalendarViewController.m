@@ -24,9 +24,6 @@ static NSString *kMonthCellIdentifier = @"JYCalendarWeekCell";
 @property (nonatomic, strong) JYCalendarTitleView *titleView;
 @property (nonatomic, strong) JYCalendarMonthPickerView *monthPickerView;
 
-@property (nonatomic, assign) BOOL animatingPickerView;
-@property (nonatomic, assign) BOOL pickerViewShowed;
-
 @property (nonatomic, assign) BOOL animatingDetailView;
 @property (nonatomic, strong) JYDateEntity *showedDateEntity;
 
@@ -39,10 +36,13 @@ static NSString *kMonthCellIdentifier = @"JYCalendarWeekCell";
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     self = [super initWithCollectionViewLayout:flowLayout];
     if (self) {
-        [self _initSubViews];
+        self.titleView          = [[JYCalendarTitleView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
+        self.titleView.delegate = self;
         
-        self.currentDate         = [NSDate date];
-        self.animatingPickerView = NO;
+        self.monthPickerView    = [[JYCalendarMonthPickerView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.width, self.view.height)];
+        self.monthPickerView.delegate = self;
+        
+        self.currentDate        = [NSDate date];
         
         flowLayout.scrollDirection         = UICollectionViewScrollDirectionHorizontal;
         flowLayout.minimumLineSpacing      = 0;
@@ -53,15 +53,6 @@ static NSString *kMonthCellIdentifier = @"JYCalendarWeekCell";
         self.edgesForExtendedLayout                        = UIRectEdgeNone;
     }
     return self;
-}
-
-- (void)_initSubViews
-{
-    self.titleView          = [[JYCalendarTitleView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
-    self.titleView.delegate = self;
-    
-    self.monthPickerView        = [[JYCalendarMonthPickerView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 105.0f)];
-    self.monthPickerView.hidden = YES;
 }
 
 - (void)setCurrentDate:(NSDate *)currentDate
@@ -174,24 +165,29 @@ static NSString *kMonthCellIdentifier = @"JYCalendarWeekCell";
 
 - (void)monthPicker:(JYCalendarMonthPickerView *)pickerView didSelectDate:(NSDate *)date
 {
+    self.currentDate = date;
+    [self.collectionView reloadData];
     
+    [pickerView dismissPickerAnimated:YES];
 }
 
 #pragma mark - JYCalendarMonthCellDelegate
 
 - (void)monthCell:(JYCalendarMonthCell *)monthCell didSelectDate:(JYDateEntity *)dateEntity
 {
-    if (self.animatingPickerView || self.animatingDetailView) {
+    if (self.animatingDetailView) {
         return;
     }
     
-    if (self.pickerViewShowed) {
-        [self _hideMonthPickerViewWithCompletion:^{
-            [self _toggleDetailViewAtMonthCell:monthCell forDate:dateEntity];
-        }];
-    } else {
-        [self _toggleDetailViewAtMonthCell:monthCell forDate:dateEntity];
-    }
+    self.animatingDetailView = YES;
+    [monthCell toggleDetailViewForDate:dateEntity completion:^(BOOL showed) {
+        self.animatingDetailView = NO;
+        if (showed) {
+            self.showedDateEntity = dateEntity;
+        } else {
+            self.showedDateEntity = nil;
+        }
+    }];
 }
 
 - (void)monthCell:(JYCalendarMonthCell *)monthCell didSelectEvent:(JYEventEntity *)event
@@ -208,11 +204,12 @@ static NSString *kMonthCellIdentifier = @"JYCalendarWeekCell";
 
 - (void)didTapTitleView:(JYCalendarTitleView *)titleView
 {
-    if (self.animatingPickerView || self.animatingDetailView) {
+    if (self.animatingDetailView || self.monthPickerView.animating) {
         return;
     }
-    if (self.pickerViewShowed) {
-        [self _hideMonthPickerViewWithCompletion:nil];
+    
+    if (self.monthPickerView.showed) {
+        [self.monthPickerView dismissPickerAnimated:YES];
     } else {
         if (self.showedDateEntity) {
             // If detail view had showd, hide it firstly
@@ -224,64 +221,19 @@ static NSString *kMonthCellIdentifier = @"JYCalendarWeekCell";
                 self.showedDateEntity = nil;
                 
                 // Show picker view
-                [self _showMonthPickerView];
+                [self.monthPickerView presentPickerBeginningAtDate:self.currentDate
+                                                            inView:self.collectionView
+                                                          animated:YES];
             }];
         } else {
-            [self _showMonthPickerView];
+            [self.monthPickerView presentPickerBeginningAtDate:self.currentDate
+                                                        inView:self.collectionView
+                                                      animated:YES];
         }
     }
 }
 
 #pragma mark - Private methods
-
-- (void)_toggleDetailViewAtMonthCell:(JYCalendarMonthCell *)monthCell
-                             forDate:(JYDateEntity *)dateEntity
-{
-    self.animatingDetailView = YES;
-    [monthCell toggleDetailViewForDate:dateEntity completion:^(BOOL showed) {
-        self.animatingDetailView = NO;
-        if (showed) {
-            self.showedDateEntity = dateEntity;
-        } else {
-            self.showedDateEntity = nil;
-        }
-    }];
-}
-
-- (void)_showMonthPickerView
-{
-    self.animatingPickerView = YES;
-    
-    self.monthPickerView.date = self.currentDate;
-    self.monthPickerView.hidden = NO;
-    [self.view addSubview:self.monthPickerView];
-    [self.view sendSubviewToBack:self.monthPickerView];
-    
-    [UIView animateWithDuration:0.3f animations:^{
-        self.collectionView.y = self.monthPickerView.height;
-    } completion:^(BOOL finished) {
-        self.animatingPickerView = NO;
-        self.pickerViewShowed    = YES;
-    }];
-}
-
-- (void)_hideMonthPickerViewWithCompletion:(void (^)())finishedBlock
-{
-    self.animatingPickerView = YES;
-    
-    [UIView animateWithDuration:0.3 animations:^{
-        self.collectionView.y = 0;
-    } completion:^(BOOL finished) {
-        self.monthPickerView.hidden = YES;
-        [self.monthPickerView removeFromSuperview];
-        self.animatingPickerView    = NO;
-        self.pickerViewShowed       = NO;
-        
-        if (finishedBlock) {
-            finishedBlock();
-        }
-    }];
-}
 
 - (NSArray *)_dateEntitesForMonth:(NSDate *)date
 {

@@ -17,6 +17,14 @@
 @interface JYCalendarMonthPickerView : UIView
 
 @property (nonatomic, weak) id<JYCalendarMonthPickerDelegate> delegate;
-@property (nonatomic, strong) NSDate *date;
+@property (nonatomic, strong, readonly) NSDate *selectedDate;
+@property (nonatomic, assign) BOOL showed;
+@property (nonatomic, assign) BOOL animating;
+
+- (void)presentPickerBeginningAtDate:(NSDate *)date
+                              inView:(UIView *)view
+                            animated:(BOOL)animated;
+
+- (void)dismissPickerAnimated:(BOOL)animated;
 
 @end

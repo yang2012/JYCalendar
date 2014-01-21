@@ -21,6 +21,7 @@
 		1BBAA602188C051600F9B74C /* comm_bg_picker_time@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BBAA601188C051600F9B74C /* comm_bg_picker_time@2x.png */; };
 		1BBAA605188C0D1E00F9B74C /* JYCalendarTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBAA604188C0D1E00F9B74C /* JYCalendarTitleView.m */; };
 		1BBAA609188D13F600F9B74C /* JYEventEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBAA608188D13F600F9B74C /* JYEventEntity.m */; };
+		1BBAA613188E446A00F9B74C /* JYCalendarMonthPickerLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBAA612188E446A00F9B74C /* JYCalendarMonthPickerLayout.m */; };
 		1BBDC3F9188930CC00EB2954 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BBDC3F8188930CC00EB2954 /* Foundation.framework */; };
 		1BBDC3FB188930CC00EB2954 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BBDC3FA188930CC00EB2954 /* CoreGraphics.framework */; };
 		1BBDC3FD188930CC00EB2954 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BBDC3FC188930CC00EB2954 /* UIKit.framework */; };
@@ -79,6 +80,8 @@
 		1BBAA604188C0D1E00F9B74C /* JYCalendarTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYCalendarTitleView.m; sourceTree = "<group>"; };
 		1BBAA607188D13F600F9B74C /* JYEventEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYEventEntity.h; sourceTree = "<group>"; };
 		1BBAA608188D13F600F9B74C /* JYEventEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYEventEntity.m; sourceTree = "<group>"; };
+		1BBAA611188E446A00F9B74C /* JYCalendarMonthPickerLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYCalendarMonthPickerLayout.h; sourceTree = "<group>"; };
+		1BBAA612188E446A00F9B74C /* JYCalendarMonthPickerLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYCalendarMonthPickerLayout.m; sourceTree = "<group>"; };
 		1BBDC3F5188930CC00EB2954 /* JYCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JYCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BBDC3F8188930CC00EB2954 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1BBDC3FA188930CC00EB2954 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -185,6 +188,8 @@
 				1BBAA5EC188BF6EB00F9B74C /* JYCalendarMonthPickerView.m */,
 				1BBAA5FA188BFE1E00F9B74C /* JYCalendarMonthPickerViewCell.h */,
 				1BBAA5FB188BFE1E00F9B74C /* JYCalendarMonthPickerViewCell.m */,
+				1BBAA611188E446A00F9B74C /* JYCalendarMonthPickerLayout.h */,
+				1BBAA612188E446A00F9B74C /* JYCalendarMonthPickerLayout.m */,
 			);
 			name = Header;
 			sourceTree = "<group>";
@@ -472,6 +477,7 @@
 				1BBDC405188930CC00EB2954 /* main.m in Sources */,
 				1BBDC4331889344D00EB2954 /* NSString+JYCalendar.m in Sources */,
 				1BBAA605188C0D1E00F9B74C /* JYCalendarTitleView.m in Sources */,
+				1BBAA613188E446A00F9B74C /* JYCalendarMonthPickerLayout.m in Sources */,
 				1BBAA5ED188BF6EB00F9B74C /* JYCalendarMonthPickerView.m in Sources */,
 				1BBDC44018896EBC00EB2954 /* JYCalendarDataSource.m in Sources */,
 				1BBAA5EA188BC91A00F9B74C /* UIView+JYCalendar.m in Sources */,

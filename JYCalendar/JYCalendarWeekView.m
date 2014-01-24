@@ -24,7 +24,7 @@
     if (self) {
         self.weekRow = weekRow;
         
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor lightGrayColor];
         
         [self _addDateViews];
     }
@@ -39,10 +39,7 @@
         dateView.tag = [self _tagForDateView:day];
         dateView.delegate = self;
         
-        CGFloat hue = (CGFloat)day / 7;
-        dateView.backgroundColor = [UIColor
-                                    colorWithHue:hue saturation:1.0f brightness:0.8f alpha:1.0f
-                                    ];
+        dateView.backgroundColor = [UIColor whiteColor];
         
         [self addSubview:dateView];
     }
@@ -53,16 +50,23 @@
     [super layoutSubviews];
     CGRect frame = self.bounds;
     
-    CGFloat inset            = 0.0f;
+    CGFloat inset            = 0.25f;
     CGFloat widthOfDateView  = frame.size.width / 7.0;
     CGFloat heightOfDateView = frame.size.height;
     
     for (NSUInteger day = 1; day < 8; day++) {
         NSInteger tag = [self _tagForDateView:day];
-        UIView *view  = [self viewWithTag:tag];
-        
+        JYCalendarDateView *view  = (JYCalendarDateView *)[self viewWithTag:tag];
         view.frame    = CGRectMake(inset + widthOfDateView * (day - 1), inset, widthOfDateView - inset * 2, heightOfDateView - inset * 2);
         
+        if (day == 1) {
+            view.textColor = [UIColor colorWithHue:1.0f saturation:1.0f brightness:1.0f alpha:0.7f];
+        } else {
+            view.textColor = [UIColor blackColor];
+        }
+        
+        view.showWeekDay = (self.weekRow == 1);
+
     }
 }
 

@@ -11,7 +11,10 @@
 #import "JYCalendarMonthCell.h"
 #import "JYCalendarMonthPickerView.h"
 #import "JYCalendarTitleView.h"
+
 #import "JYDateEntity.h"
+#import "JYEventEntity.h"
+
 #import "NSDate+JYCalendar.h"
 
 #import "UIView+JYCalendar.h"
@@ -45,8 +48,6 @@ static NSString *kMonthCellIdentifier = @"JYCalendarWeekCell";
         self.currentDate        = [NSDate date];
         
         flowLayout.scrollDirection         = UICollectionViewScrollDirectionHorizontal;
-        flowLayout.minimumLineSpacing      = 0;
-        flowLayout.minimumInteritemSpacing = 0;
         
         self.collectionView.showsHorizontalScrollIndicator = NO;
         self.collectionView.pagingEnabled                  = YES;
@@ -197,7 +198,19 @@ static NSString *kMonthCellIdentifier = @"JYCalendarWeekCell";
 
 - (NSArray *)monthCell:(JYCalendarMonthCell *)monthCell eventsForDate:(JYDateEntity *)dateEntity
 {
-    return [NSArray array];
+    NSMutableArray *events = [NSMutableArray array];
+    if (dateEntity.date.day % 2 == 0) {
+        JYEventEntity *event = [[JYEventEntity alloc] init];
+        event.content = @"Taking exercise";
+        event.startDate = [NSDate date];
+        [events addObject:event];
+        
+        event = [[JYEventEntity alloc] init];
+        event.content = @"Make some food";
+        event.startDate = [NSDate date];
+        [events addObject:event];
+    }
+    return events;
 }
 
 #pragma mark - JYCalendarTitleViewDelegate

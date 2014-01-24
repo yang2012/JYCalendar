@@ -16,6 +16,8 @@
 - (NSInteger)hour;
 - (NSUInteger)week;
 
+- (BOOL)isAM;
+
 - (NSString *)weekDayName;
 - (NSString *)monthName;
 

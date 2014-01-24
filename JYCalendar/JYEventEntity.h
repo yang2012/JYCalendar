@@ -10,4 +10,8 @@
 
 @interface JYEventEntity : NSObject
 
+@property (nonatomic, strong) NSString *content;
+@property (nonatomic, strong) NSDate *startDate;
+@property (nonatomic, strong) NSDate *endDate;
+
 @end

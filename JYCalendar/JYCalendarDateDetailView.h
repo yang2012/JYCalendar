@@ -6,8 +6,8 @@
 //  Copyright (c) 2014年 Nanjing University. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 @interface JYCalendarDateDetailView : UIView
+
+- (void)showEvents:(NSArray *)events animated:(BOOL)animated;
 
 @end

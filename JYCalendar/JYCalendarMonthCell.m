@@ -46,13 +46,14 @@ static NSInteger kMaxWeekCount = 6;
         self.showedDate    = nil;
         self.showedWeekRow = 0;
         self.clipsToBounds = YES;
+        self.backgroundColor = [UIColor lightGrayColor];
     }
     return self;
 }
 
 - (void)_addSubviews
 {
-    self.detailView = [[JYCalendarDateDetailView alloc] init];
+    self.detailView = [[JYCalendarDateDetailView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.width, 160.0f)];
     self.detailView.hidden = YES;
     [self.contentView addSubview:self.detailView];
     
@@ -71,7 +72,7 @@ static NSInteger kMaxWeekCount = 6;
     [super layoutSubviews];
     CGRect frame = self.bounds;
     
-    CGFloat widthOfWeekView = frame.size.width;
+    CGFloat widthOfWeekView = frame.size.width - 0.2f;
     CGFloat heightOfWeekView = frame.size.height / self.realWeekCount;
     
     for (NSUInteger index = 0; index < kMaxWeekCount; index++) {
@@ -79,7 +80,7 @@ static NSInteger kMaxWeekCount = 6;
         view.frame = CGRectMake(0.0f, heightOfWeekView * index, widthOfWeekView, heightOfWeekView);
     }
     
-    self.detailView.frame = CGRectMake(0.0f, 0.0f, frame.size.width, 100.0f);
+    self.detailView.width = self.width;
 }
 
 - (void)setUpMonthWithDateEntities:(NSArray *)dateEntities
@@ -158,6 +159,8 @@ static NSInteger kMaxWeekCount = 6;
     } else {
         events = [NSArray array];
     }
+    
+    [self.detailView showEvents:events animated:YES];
     
     [self _showAtRow:row completion:finishedBlock];
 }

@@ -20,5 +20,7 @@
 
 @property (nonatomic, weak) id<JYCalendarDateViewDelegate> delegate;
 @property (nonatomic, strong) JYDateEntity *dateEntity;
+@property (nonatomic, strong) UIColor *textColor;
+@property (nonatomic, assign) BOOL showWeekDay;
 
 @end

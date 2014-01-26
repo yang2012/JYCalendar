@@ -7,20 +7,24 @@
 //
 
 @class JYCalendarWeekView;
+@class JYDateEntity;
 
 @protocol JYCalendarWeekViewDelegate <NSObject>
 
-- (void)weekView:(JYCalendarWeekView *)weekView didTapDate:(NSDate *)date;
+- (void)weekView:(JYCalendarWeekView *)weekView didTapDate:(JYDateEntity *)dateEntity;
 
 @end
 
 @interface JYCalendarWeekView : UIView
 
 @property (nonatomic, weak) id<JYCalendarWeekViewDelegate> delegate;
-@property (nonatomic, assign, readonly) NSUInteger weekRow;
+@property (nonatomic, assign, readonly) NSUInteger week;
 
-- (id)initWithWeekRow:(NSUInteger)weekRow;
+- (id)initWithWeek:(NSUInteger)week;
 
 - (void)setUpDates:(NSArray *)dateEntities;
+
+- (void)selectDayAtWeekday:(NSInteger)weekday;
+- (void)deselectDayAtWeekday:(NSInteger)weekday;
 
 @end

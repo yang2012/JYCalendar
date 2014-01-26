@@ -28,7 +28,7 @@ static NSString *kMonthCellIdentifier = @"JYCalendarWeekCell";
 @property (nonatomic, strong) JYCalendarMonthPickerView *monthPickerView;
 
 @property (nonatomic, assign) BOOL animatingDetailView;
-@property (nonatomic, strong) JYDateEntity *showedDateEntity;
+@property (nonatomic, assign) BOOL hasShowedDetail;
 
 @end
 
@@ -46,6 +46,8 @@ static NSString *kMonthCellIdentifier = @"JYCalendarWeekCell";
         self.monthPickerView.delegate = self;
         
         self.currentDate        = [NSDate date];
+        self.animatingDetailView = NO;
+        self.hasShowedDetail = NO;
         
         flowLayout.scrollDirection         = UICollectionViewScrollDirectionHorizontal;
         
@@ -140,6 +142,17 @@ static NSString *kMonthCellIdentifier = @"JYCalendarWeekCell";
 
 #pragma mark - Scroll delegate
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    JYCalendarMonthCell *monthCell = (JYCalendarMonthCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:1]];
+    
+    self.animatingDetailView = YES;
+    [monthCell hideDetailViewAnimated:NO completion:^(BOOL showed) {
+        self.animatingDetailView = NO;
+        self.hasShowedDetail     = NO;
+    }];
+}
+
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     
     // Calculate where the collection view should be at the right-hand end item
@@ -184,9 +197,9 @@ static NSString *kMonthCellIdentifier = @"JYCalendarWeekCell";
     [monthCell toggleDetailViewForDate:dateEntity completion:^(BOOL showed) {
         self.animatingDetailView = NO;
         if (showed) {
-            self.showedDateEntity = dateEntity;
+            self.hasShowedDetail = YES;
         } else {
-            self.showedDateEntity = nil;
+            self.hasShowedDetail = NO;
         }
     }];
 }
@@ -196,10 +209,10 @@ static NSString *kMonthCellIdentifier = @"JYCalendarWeekCell";
     
 }
 
-- (NSArray *)monthCell:(JYCalendarMonthCell *)monthCell eventsForDate:(JYDateEntity *)dateEntity
+- (NSArray *)monthCell:(JYCalendarMonthCell *)monthCell eventsForDate:(NSDate *)date
 {
     NSMutableArray *events = [NSMutableArray array];
-    if (dateEntity.date.day % 2 == 0) {
+    if (date.day % 2 == 0) {
         JYEventEntity *event = [[JYEventEntity alloc] init];
         event.content = @"Taking exercise";
         event.startDate = [NSDate date];
@@ -224,14 +237,14 @@ static NSString *kMonthCellIdentifier = @"JYCalendarWeekCell";
     if (self.monthPickerView.showed) {
         [self.monthPickerView dismissPickerAnimated:YES];
     } else {
-        if (self.showedDateEntity) {
+        if (self.hasShowedDetail) {
             // If detail view had showd, hide it firstly
             JYCalendarMonthCell *monthCell = (JYCalendarMonthCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:1]];
             
             self.animatingDetailView = YES;
-            [monthCell hideDetailViewWithCompletion:^(BOOL showed) {
+            [monthCell hideDetailViewAnimated:YES completion:^(BOOL showed) {
                 self.animatingDetailView = NO;
-                self.showedDateEntity = nil;
+                self.hasShowedDetail = NO;
                 
                 // Show picker view
                 [self.monthPickerView presentPickerBeginningAtDate:self.currentDate

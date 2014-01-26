@@ -11,36 +11,34 @@
 
 @interface JYCalendarWeekView () <JYCalendarDateViewDelegate>
 
-@property (nonatomic, assign) NSUInteger weekRow;
+@property (nonatomic, assign) NSUInteger week;
 
 @end
 
 @implementation JYCalendarWeekView
 
-- (id)initWithWeekRow:(NSUInteger)weekRow
+- (id)initWithWeek:(NSUInteger)week
 {
     self = [super init];
     
     if (self) {
-        self.weekRow = weekRow;
+        _week = week;
+        
+        [self _initialize];
         
         self.backgroundColor = [UIColor lightGrayColor];
-        
-        [self _addDateViews];
     }
     
     return self;
 }
 
-- (void)_addDateViews
+- (void)_initialize
 {
-    for (NSUInteger day = 1; day < 8; day++) {
+    for (NSUInteger weekday = 0; weekday < 7; weekday++) {
         JYCalendarDateView *dateView = [[JYCalendarDateView alloc] init];
-        dateView.tag = [self _tagForDateView:day];
+        dateView.tag = [self _tagForDateViewWithWeekday:weekday];
         dateView.delegate = self;
-        
-        dateView.backgroundColor = [UIColor whiteColor];
-        
+                
         [self addSubview:dateView];
     }
 }
@@ -54,44 +52,59 @@
     CGFloat widthOfDateView  = frame.size.width / 7.0;
     CGFloat heightOfDateView = frame.size.height;
     
-    for (NSUInteger day = 1; day < 8; day++) {
-        NSInteger tag = [self _tagForDateView:day];
-        JYCalendarDateView *view  = (JYCalendarDateView *)[self viewWithTag:tag];
-        view.frame    = CGRectMake(inset + widthOfDateView * (day - 1), inset, widthOfDateView - inset * 2, heightOfDateView - inset * 2);
+    for (NSUInteger weekday = 0; weekday < 7; weekday++) {
+        JYCalendarDateView *view  = [self _dateViewForWeekday:weekday];
+        view.frame    = CGRectMake(inset + widthOfDateView * weekday, inset, widthOfDateView - inset * 2, heightOfDateView - inset * 2);
         
-        if (day == 1) {
+        if (weekday == 0) {
             view.textColor = [UIColor colorWithHue:1.0f saturation:1.0f brightness:1.0f alpha:0.7f];
         } else {
             view.textColor = [UIColor blackColor];
         }
         
-        view.showWeekDay = (self.weekRow == 1);
-
+        view.showWeekDay = (self.week == 0);
     }
 }
 
 - (void)setUpDates:(NSArray *)dateEntities
 {
     NSInteger count = dateEntities.count;
-    for (NSInteger day = 1; day < count + 1; day++) {
-        JYDateEntity *dateEntity = dateEntities[day - 1];
+    for (NSInteger weekday = 0; weekday < count; weekday++) {
+        JYDateEntity *dateEntity = dateEntities[weekday];
 
-        NSInteger tag = [self _tagForDateView:day];
-        JYCalendarDateView *dateView = (JYCalendarDateView *)[self viewWithTag:tag];
+        JYCalendarDateView *dateView = [self _dateViewForWeekday:weekday];
         dateView.dateEntity = dateEntity;
     }
 }
 
-- (void)didTapAtdateView:(JYCalendarDateView *)dateView
+- (void)selectDayAtWeekday:(NSInteger)weekday
+{
+    JYCalendarDateView *view  = [self _dateViewForWeekday:weekday];
+    view.selected = YES;
+}
+
+- (void)deselectDayAtWeekday:(NSInteger)weekday
+{
+    JYCalendarDateView *view = [self _dateViewForWeekday:weekday];
+    view.selected = NO;
+}
+
+- (void)didTapAtDateView:(JYCalendarDateView *)dateView
 {
     if ([self.delegate respondsToSelector:@selector(weekView:didTapDate:)]) {
-        [self.delegate weekView:self didTapDate:dateView.dateEntity.date];
+        [self.delegate weekView:self didTapDate:dateView.dateEntity];
     }
 }
 
-- (NSInteger)_tagForDateView:(NSInteger)day
+- (JYCalendarDateView *)_dateViewForWeekday:(NSInteger)weekday
 {
-    return self.weekRow * 7 + day;
+    NSInteger tag = [self _tagForDateViewWithWeekday:weekday];
+    return (JYCalendarDateView *)[self viewWithTag:tag];
+}
+
+- (NSInteger)_tagForDateViewWithWeekday:(NSInteger)weekday
+{
+    return (self.week + 1) * 7 + (weekday + 1);
 }
 
 @end

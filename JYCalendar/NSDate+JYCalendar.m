@@ -81,7 +81,14 @@
     return [[NSCalendar currentCalendar] ordinalityOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitWeekOfMonth forDate:self];
 }
 
-- (NSString *)weekDayName {
+- (NSUInteger)weekday
+{
+    NSCalendar *calendar                = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *dateComponents    = [calendar components:NSCalendarUnitWeekday fromDate:self];
+    return dateComponents.weekday;
+}
+
+- (NSString *)weekdayName {
     NSCalendar *calendar                = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *dateComponents    = [calendar components:NSCalendarUnitWeekday fromDate:self];
     NSString *name = @"";
@@ -259,6 +266,32 @@
     NSDateComponents *comps             = [calendar components:unitFlags fromDate:startDate toDate:endDate options:0];
     int days                            = [comps day];
     return days;
+}
+
+- (NSDate *)nextDay
+{
+    return [self offsetDay:1];
+}
+
+- (NSDate *)previousDay
+{
+    return [self offsetDay:-1];
+}
+
+- (NSDate *)firstDayOfTheWeek
+{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:NSCalendarUnitYear | NSCalendarUnitWeekOfYear fromDate:self];
+    components.weekday = 1;
+    return [calendar dateFromComponents:components];
+}
+
+- (NSDate *)lastDayOfTheWeek
+{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:NSCalendarUnitYear | NSCalendarUnitWeekOfYear fromDate:self];
+    components.weekday = 7;
+    return [calendar dateFromComponents:components];
 }
 
 - (NSDate *)firstDateOfTheMonth

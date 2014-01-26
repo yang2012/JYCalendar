@@ -18,7 +18,9 @@
 
 - (BOOL)isAM;
 
-- (NSString *)weekDayName;
+- (NSUInteger)weekday;
+- (NSString *)weekdayName;
+
 - (NSString *)monthName;
 
 - (NSDate *)offsetDay:(int)numDays;
@@ -42,6 +44,12 @@
 - (BOOL)isToday;
 
 + (NSInteger)dayBetweenStartDate:(NSDate *)startDate endDate:(NSDate *)endDate;
+
+- (NSDate *)nextDay;
+- (NSDate *)previousDay;
+
+- (NSDate *)firstDayOfTheWeek;
+- (NSDate *)lastDayOfTheWeek;
 
 - (NSDate *)firstDateOfTheMonth;
 - (NSDate *)dateByMovingToPreviousMonth;

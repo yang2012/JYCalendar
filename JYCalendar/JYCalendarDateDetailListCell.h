@@ -8,8 +8,8 @@
 
 #import "JYEventEntity.h"
 
-@interface JYCalendarDateDetailCell : UICollectionViewCell
+@interface JYCalendarDateDetailListCell : UICollectionViewCell
 
-@property (nonatomic, strong) JYEventEntity *eventEntity;
+@property (nonatomic, strong) NSArray *eventEntities;
 
 @end

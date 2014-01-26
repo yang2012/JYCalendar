@@ -12,7 +12,7 @@
 
 @protocol JYCalendarDateViewDelegate <NSObject>
 
-- (void)didTapAtdateView:(JYCalendarDateView *)dateView;
+- (void)didTapAtDateView:(JYCalendarDateView *)dateView;
 
 @end
 
@@ -22,5 +22,7 @@
 @property (nonatomic, strong) JYDateEntity *dateEntity;
 @property (nonatomic, strong) UIColor *textColor;
 @property (nonatomic, assign) BOOL showWeekDay;
+
+@property (nonatomic, assign) BOOL selected;
 
 @end

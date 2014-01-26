@@ -14,7 +14,7 @@
 
 @property (nonatomic, strong) UILabel *dayLabelView;
 @property (nonatomic, strong) UILabel *weekLabelView;
-@property (nonatomic, assign) BOOL showed;
+@property (nonatomic, strong) UIView *selectedBackgroundView;
 
 @end
 
@@ -26,7 +26,7 @@
     if (self) {
         [self _addSubviews];
         self.showWeekDay = NO;
-        self.showed      = NO;
+        self.selected    = NO;
         
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
         [self addGestureRecognizer:tapGesture];
@@ -36,6 +36,10 @@
 
 - (void)_addSubviews
 {
+    self.selectedBackgroundView = [UIView new];
+    self.selectedBackgroundView.backgroundColor = [UIColor colorWithHue:0.61f saturation:0.5f brightness:1.0f alpha:0.2f];
+    [self addSubview:self.selectedBackgroundView];
+    
     self.dayLabelView = [[UILabel alloc] initWithFrame:CGRectMake(3.0f, 0.0f, 0.0f, 0.0f)];
     self.dayLabelView.textAlignment = NSTextAlignmentLeft;
     self.dayLabelView.font = [UIFont systemFontOfSize:13.0f];
@@ -53,16 +57,30 @@
     [super layoutSubviews];
     
     self.weekLabelView.x = self.width - self.weekLabelView.width - 3.0f;
+    self.selectedBackgroundView.width = self.width;
+    self.selectedBackgroundView.height = self.height;
 }
 
 - (void)setDateEntity:(JYDateEntity *)dateEntity
 {
     _dateEntity = dateEntity;
     
+    if (dateEntity.date.isToday) {
+        self.backgroundColor = [UIColor colorWithHue:4/7.0f saturation:0.8f brightness:1.0f alpha:0.5f];
+    } else {
+        self.backgroundColor = [UIColor whiteColor];
+    }
+    
+    if (dateEntity.visible) {
+        self.alpha = 1.0f;
+    } else {
+        self.alpha = 0.8f;
+    }
+    
     self.dayLabelView.text = dateEntity.formatDate;
     [self.dayLabelView sizeToFit];
     
-    self.weekLabelView.text = dateEntity.date.weekDayName;
+    self.weekLabelView.text = dateEntity.date.weekdayName;
     [self.weekLabelView sizeToFit];
     
     [self setNeedsLayout];
@@ -74,6 +92,17 @@
     
     self.dayLabelView.textColor = textColor;
     self.weekLabelView.textColor = textColor;
+}
+
+- (void)setSelected:(BOOL)selected
+{
+    _selected = selected;
+    
+    if (selected) {
+        self.selectedBackgroundView.hidden = NO;
+    } else {
+        self.selectedBackgroundView.hidden = YES;
+    }
 }
 
 - (void)setShowWeekDay:(BOOL)showWeekDay
@@ -89,8 +118,8 @@
 
 - (void)tap:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(didTapAtdateView:)]) {
-        [self.delegate didTapAtdateView:self];
+    if ([self.delegate respondsToSelector:@selector(didTapAtDateView:)]) {
+        [self.delegate didTapAtDateView:self];
     }
 }
 

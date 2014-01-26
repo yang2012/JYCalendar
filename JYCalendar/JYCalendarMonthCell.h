@@ -15,7 +15,7 @@
 @protocol JYCalendarMonthCellDelegate <NSObject>
 
 - (void)monthCell:(JYCalendarMonthCell *)monthCell didSelectDate:(JYDateEntity *)dateEntity;
-- (NSArray *)monthCell:(JYCalendarMonthCell *)monthCell eventsForDate:(JYDateEntity *)dateEntity;
+- (NSArray *)monthCell:(JYCalendarMonthCell *)monthCell eventsForDate:(NSDate *)date;
 - (void)monthCell:(JYCalendarMonthCell *)monthCell didSelectEvent:(JYEventEntity *)event;
 
 @end
@@ -29,6 +29,6 @@
 - (void)toggleDetailViewForDate:(JYDateEntity *)dateEntity
                      completion:(void (^)(BOOL showed))finishedBlock;
 
-- (void)hideDetailViewWithCompletion:(void (^)(BOOL showed))finishedBlock;
+- (void)hideDetailViewAnimated:(BOOL)animated completion:(void (^)(BOOL showed))finishedBlock;
 
 @end

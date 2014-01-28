@@ -18,9 +18,11 @@ static NSString *kHeaderCellIdentifier = @"JYHeaderCell";
 
 @interface JYCalendarMonthPickerView () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
+@property (nonatomic, assign) BOOL showed;
+@property (nonatomic, assign) BOOL animating;
+
 @property (nonatomic, strong) UIView *originView;
 @property (nonatomic, strong) UIView *pickerView;
-@property (nonatomic, strong) UIView *coverView;
 
 @property (nonatomic, strong) NSDate *beginDate;
 @property (nonatomic, strong) NSDate *currentDate;
@@ -51,8 +53,7 @@ static NSString *kHeaderCellIdentifier = @"JYHeaderCell";
 - (void)_initialize
 {
     self.backgroundColor = [UIColor blackColor];
-    self.alpha = 0.5;
-    
+    self.alpha           = 0.0f;
     self.currentSection = 0;
     
     self.pickerView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -128,7 +129,7 @@ static NSString *kHeaderCellIdentifier = @"JYHeaderCell";
     [UIView animateWithDuration:animated ? 0.3f : 0.0f animations:^{
         self.originView.y = kHeightofPickerView;
         self.y            = kHeightofPickerView;
-        self.alpha        = 0.5f;
+        self.alpha        = 0.2f;
     } completion:^(BOOL finished) {
         self.animating = NO;
         self.showed    = YES;
@@ -137,7 +138,12 @@ static NSString *kHeaderCellIdentifier = @"JYHeaderCell";
 
 - (void)dismissPickerAnimated:(BOOL)animated
 {
-    [self _hideMonthPickerViewAnimated:animated];
+    [self _hideMonthPickerViewAnimated:animated completion:nil];
+}
+
+- (void)dismissPickerAnimated:(BOOL)animated completion:(void (^)())finishedBlock
+{
+    [self _hideMonthPickerViewAnimated:animated completion:finishedBlock];
 }
 
 #pragma mark - UIView
@@ -179,7 +185,7 @@ static NSString *kHeaderCellIdentifier = @"JYHeaderCell";
                                              animated:NO];
 }
 
-- (void)_hideMonthPickerViewAnimated:(BOOL)animated
+- (void)_hideMonthPickerViewAnimated:(BOOL)animated completion:(void (^)())finishedBlock
 {
     self.animating = YES;
     [UIView animateWithDuration: animated ? 0.3f : 0.0f animations:^{
@@ -190,6 +196,10 @@ static NSString *kHeaderCellIdentifier = @"JYHeaderCell";
         self.animating = NO;
         self.showed    = NO;
         [self _removeSubviewsFromOriginView];
+        
+        if (finishedBlock) {
+            finishedBlock();
+        }
     }];
 }
 
@@ -222,7 +232,7 @@ static NSString *kHeaderCellIdentifier = @"JYHeaderCell";
 
 - (void)_tap:(UITapGestureRecognizer *)sender
 {
-    [self _hideMonthPickerViewAnimated:YES];
+    [self _hideMonthPickerViewAnimated:YES completion:nil];
 }
 
 #pragma mark - Navigation Animation

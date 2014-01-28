@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 Nanjing University. All rights reserved.
 //
 
-#import "JYEventEntity.h"
+#import "JYEvent.h"
 
 @interface JYCalendarDateDetailListCell : UICollectionViewCell
 

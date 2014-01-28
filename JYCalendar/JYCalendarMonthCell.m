@@ -9,7 +9,7 @@
 #import "JYCalendarMonthCell.h"
 #import "JYCalendarWeekDetailView.h"
 
-#import "JYDateEntity.h"
+#import "JYDate.h"
 #import "NSDate+JYCalendar.h"
 #import "UIView+JYCalendar.h"
 
@@ -26,7 +26,7 @@ static NSInteger kMaxWeekCount = 6;
 
 @property (nonatomic, assign) BOOL animating;
 
-@property (nonatomic, strong) JYDateEntity *showedDateEntity;
+@property (nonatomic, strong) JYDate *showedDateEntity;
 
 @property (nonatomic, strong) JYCalendarWeekDetailView *detailView;
 
@@ -84,7 +84,7 @@ static NSInteger kMaxWeekCount = 6;
     self.detailView.width = self.width;
 }
 
-- (void)setShowedDateEntity:(JYDateEntity *)showedDateEntity
+- (void)setShowedDateEntity:(JYDate *)showedDateEntity
 {
     if (_showedDateEntity) {
         [self _unhighlightDateWith:_showedDateEntity];
@@ -105,7 +105,7 @@ static NSInteger kMaxWeekCount = 6;
     NSInteger weekIndex = 0;
     NSMutableArray *datesForWeek = [NSMutableArray arrayWithCapacity:7];
     for (NSUInteger date = 0; date < dateCount; date++) {
-        JYDateEntity *dateEntity = dateEntities[date];
+        JYDate *dateEntity = dateEntities[date];
         dateEntity.weekRow = weekIndex;
         [datesForWeek addObject:dateEntity];
         
@@ -122,14 +122,14 @@ static NSInteger kMaxWeekCount = 6;
     [self setNeedsLayout];
 }
 
-- (void)weekView:(JYCalendarWeekView *)weekView didTapDate:(JYDateEntity *)dateEntity
+- (void)weekView:(JYCalendarWeekView *)weekView didTapDate:(JYDate *)dateEntity
 {
     if ([self.delegate respondsToSelector:@selector(monthCell:didSelectDate:)]) {
         [self.delegate monthCell:self didSelectDate:dateEntity];
     }
 }
 
-- (void)toggleDetailViewForDate:(JYDateEntity *)dateEntity
+- (void)toggleDetailViewForDate:(JYDate *)dateEntity
                      completion:(void (^)(BOOL))finishedBlock
 {
     if (self.animating) {
@@ -170,7 +170,7 @@ static NSInteger kMaxWeekCount = 6;
     [self _hideDetailViewAnimated:animated completion:finishedBlock];
 }
 
-- (void)_initAndShowDetailViewWithDateEntiry:(JYDateEntity *)dateEntity
+- (void)_initAndShowDetailViewWithDateEntiry:(JYDate *)dateEntity
                                        atRow:(NSInteger)row
                                   completion:(void (^)(BOOL))finishedBlock
 {
@@ -180,7 +180,7 @@ static NSInteger kMaxWeekCount = 6;
     [self _showDetailViewAtRow:row completion:finishedBlock];
 }
 
-- (void)_setupDataForDetailViewWithDateEntity:(JYDateEntity *)dateEntity
+- (void)_setupDataForDetailViewWithDateEntity:(JYDate *)dateEntity
 {
     NSMutableArray *events = [NSMutableArray arrayWithCapacity:7];
     if ([self.delegate respondsToSelector:@selector(monthCell:eventsForDate:)]) {
@@ -201,20 +201,20 @@ static NSInteger kMaxWeekCount = 6;
     }
 }
              
-- (void)_navigateToDay:(JYDateEntity *)dateEntity
+- (void)_navigateToDay:(JYDate *)dateEntity
               animated:(BOOL)animated
 {
     self.showedDateEntity = dateEntity;
     [self.detailView showWeekday:dateEntity.date.weekday animated:animated];
 }
 
-- (void)_unhighlightDateWith:(JYDateEntity *)dateEntity
+- (void)_unhighlightDateWith:(JYDate *)dateEntity
 {
     JYCalendarWeekView *weekView = self.weekViews[dateEntity.weekRow];
     [weekView deselectDayAtWeekday:dateEntity.date.weekday - 1];
 }
 
-- (void)_highlightDateWith:(JYDateEntity *)dateEntity
+- (void)_highlightDateWith:(JYDate *)dateEntity
 {
     JYCalendarWeekView *weekView = self.weekViews[dateEntity.weekRow];
     [weekView selectDayAtWeekday:dateEntity.date.weekday - 1];
@@ -324,7 +324,7 @@ static NSInteger kMaxWeekCount = 6;
 
 - (void)weekDetailViewDidNavigateToPreviousDay:(JYCalendarWeekDetailView *)detailView
 {
-    JYDateEntity *newDateEntity = [[JYDateEntity alloc] init];
+    JYDate *newDateEntity = [[JYDate alloc] init];
     newDateEntity.date = [self.showedDateEntity.date previousDay];
     newDateEntity.weekRow = self.showedDateEntity.weekRow;
     newDateEntity.visible = self.showedDateEntity.visible;
@@ -333,7 +333,7 @@ static NSInteger kMaxWeekCount = 6;
 
 - (void)weekDetailViewDidNavigateToNextDay:(JYCalendarWeekDetailView *)detailView
 {
-    JYDateEntity *newDateEntity = [[JYDateEntity alloc] init];
+    JYDate *newDateEntity = [[JYDate alloc] init];
     newDateEntity.date = [self.showedDateEntity.date nextDay];
     newDateEntity.weekRow = self.showedDateEntity.weekRow;
     newDateEntity.visible = self.showedDateEntity.visible;

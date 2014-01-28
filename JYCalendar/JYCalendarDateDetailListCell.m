@@ -7,7 +7,7 @@
 //
 
 #import "JYCalendarDateDetailListCell.h"
-#import "JYEventEntity.h"
+#import "JYEvent.h"
 #import "NSDate+JYCalendar.h"
 #import "UIView+JYCalendar.h"
 
@@ -109,7 +109,7 @@ static NSInteger kTagForEventContentLabel = 3;
 
 - (void)configureCell:(UITableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath
 {
-    JYEventEntity *eventEntity = self.eventEntities[indexPath.row];
+    JYEvent *eventEntity = self.eventEntities[indexPath.row];
     
     UIImageView *indicatorImageView = (UIImageView *)[cell viewWithTag:kTagForImageView];
     if (eventEntity.startDate.isAM) {

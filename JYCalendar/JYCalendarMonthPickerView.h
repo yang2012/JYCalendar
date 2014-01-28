@@ -18,13 +18,15 @@
 
 @property (nonatomic, weak) id<JYCalendarMonthPickerDelegate> delegate;
 @property (nonatomic, strong, readonly) NSDate *selectedDate;
-@property (nonatomic, assign) BOOL showed;
-@property (nonatomic, assign) BOOL animating;
+@property (nonatomic, assign, readonly) BOOL showed;
+@property (nonatomic, assign, readonly) BOOL animating;
 
 - (void)presentPickerBeginningAtDate:(NSDate *)date
                               inView:(UIView *)view
                             animated:(BOOL)animated;
 
 - (void)dismissPickerAnimated:(BOOL)animated;
+
+- (void)dismissPickerAnimated:(BOOL)animated completion:(void (^)())finishedBlock;
 
 @end

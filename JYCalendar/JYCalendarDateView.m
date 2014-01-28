@@ -61,7 +61,7 @@
     self.selectedBackgroundView.height = self.height;
 }
 
-- (void)setDateEntity:(JYDateEntity *)dateEntity
+- (void)setDateEntity:(JYDate *)dateEntity
 {
     _dateEntity = dateEntity;
     

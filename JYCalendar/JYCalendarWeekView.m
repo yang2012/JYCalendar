@@ -70,7 +70,7 @@
 {
     NSInteger count = dateEntities.count;
     for (NSInteger weekday = 0; weekday < count; weekday++) {
-        JYDateEntity *dateEntity = dateEntities[weekday];
+        JYDate *dateEntity = dateEntities[weekday];
 
         JYCalendarDateView *dateView = [self _dateViewForWeekday:weekday];
         dateView.dateEntity = dateEntity;

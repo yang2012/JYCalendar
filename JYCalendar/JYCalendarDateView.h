@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 Nanjing University. All rights reserved.
 //
 
-#import "JYDateEntity.h"
+#import "JYDate.h"
 
 @class JYCalendarDateView;
 
@@ -19,7 +19,7 @@
 @interface JYCalendarDateView : UIView
 
 @property (nonatomic, weak) id<JYCalendarDateViewDelegate> delegate;
-@property (nonatomic, strong) JYDateEntity *dateEntity;
+@property (nonatomic, strong) JYDate *dateEntity;
 @property (nonatomic, strong) UIColor *textColor;
 @property (nonatomic, assign) BOOL showWeekDay;
 

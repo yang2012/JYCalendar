@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface JYDateEntity : NSObject
+@interface JYDate : NSObject
 
 @property (nonatomic, assign) BOOL visible;
 @property (nonatomic, strong) NSDate *date;

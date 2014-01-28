@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface JYEventEntity : NSObject
+@interface JYEvent : NSObject
 
 @property (nonatomic, strong) NSString *content;
 @property (nonatomic, strong) NSDate *startDate;

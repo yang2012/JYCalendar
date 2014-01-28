@@ -6,10 +6,10 @@
 //  Copyright (c) 2014年 Nanjing University. All rights reserved.
 //
 
-#import "JYDateEntity.h"
+#import "JYDate.h"
 #import "NSDate+JYCalendar.h"
 
-@implementation JYDateEntity
+@implementation JYDate
 
 - (NSString *)formatDate
 {

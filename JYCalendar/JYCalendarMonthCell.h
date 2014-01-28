@@ -7,16 +7,16 @@
 //
 
 #import "JYCalendarWeekView.h"
-#import "JYEventEntity.h"
-#import "JYDateEntity.h"
+#import "JYEvent.h"
+#import "JYDate.h"
 
 @class JYCalendarMonthCell;
 
 @protocol JYCalendarMonthCellDelegate <NSObject>
 
-- (void)monthCell:(JYCalendarMonthCell *)monthCell didSelectDate:(JYDateEntity *)dateEntity;
+- (void)monthCell:(JYCalendarMonthCell *)monthCell didSelectDate:(JYDate *)dateEntity;
 - (NSArray *)monthCell:(JYCalendarMonthCell *)monthCell eventsForDate:(NSDate *)date;
-- (void)monthCell:(JYCalendarMonthCell *)monthCell didSelectEvent:(JYEventEntity *)event;
+- (void)monthCell:(JYCalendarMonthCell *)monthCell didSelectEvent:(JYEvent *)event;
 
 @end
 
@@ -26,7 +26,7 @@
 
 - (void)setUpMonthWithDateEntities:(NSArray *)dateEntities;
 
-- (void)toggleDetailViewForDate:(JYDateEntity *)dateEntity
+- (void)toggleDetailViewForDate:(JYDate *)dateEntity
                      completion:(void (^)(BOOL showed))finishedBlock;
 
 - (void)hideDetailViewAnimated:(BOOL)animated completion:(void (^)(BOOL showed))finishedBlock;

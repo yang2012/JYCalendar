@@ -7,11 +7,11 @@
 //
 
 @class JYCalendarWeekView;
-@class JYDateEntity;
+@class JYDate;
 
 @protocol JYCalendarWeekViewDelegate <NSObject>
 
-- (void)weekView:(JYCalendarWeekView *)weekView didTapDate:(JYDateEntity *)dateEntity;
+- (void)weekView:(JYCalendarWeekView *)weekView didTapDate:(JYDate *)dateEntity;
 
 @end
 

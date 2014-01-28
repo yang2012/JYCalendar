@@ -8,16 +8,13 @@ PODS:
   - ReactiveCocoa/Core (2.2.3):
     - ReactiveCocoa/no-arc
   - ReactiveCocoa/no-arc (2.2.3)
-  - Reveal-iOS-SDK (1.0.3)
 
 DEPENDENCIES:
   - Mantle
   - ReactiveCocoa
-  - Reveal-iOS-SDK
 
 SPEC CHECKSUMS:
   Mantle: abc3b0c81bc66eb624cf9cebb8640e377d5a44ae
   ReactiveCocoa: b3cb6ebd50f1a0f2e39c6fd7ce3c428b6efcb22b
-  Reveal-iOS-SDK: f2525cb560a564fdc086316e89ec45ced6977fd3
 
 COCOAPODS: 0.25.0

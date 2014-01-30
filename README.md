@@ -1,8 +1,8 @@
 #JYCalendar
-Calendar for iOS that stimulates [SolCalendar](https://play.google.com/store/apps/details?id=net.daum.android.solcalendar) app.
+Calendar module for iOS that simulates [SolCalendar](https://play.google.com/store/apps/details?id=net.daum.android.solcalendar) app.
 
 ##Screenshots
-<img src="https://github.com/yang2012/JYCalendar/tree/master/Resource/main.png" width="50%" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/yang2012/JYCalendar/tree/master/Resource/detail.png" width="50%" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/yang2012/JYCalendar/tree/master/Resource/menu.png" width="50%" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/yang2012/JYCalendar/tree/master/Resource/monthPicker.png" width="50%" />
+<img src="https://github.com/yang2012/JYCalendar/tree/develop/Resource/main.png" width="50%" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/yang2012/JYCalendar/tree/develop/Resource/detail.png" width="50%" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/yang2012/JYCalendar/tree/develop/Resource/menu.png" width="50%" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/yang2012/JYCalendar/tree/develop/Resource/monthPicker.png" width="50%" />
 
 ##Include frameword in your project
 

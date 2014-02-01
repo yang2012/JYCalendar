@@ -1,31 +1,34 @@
 #JYCalendar
-Calendar module for iOS that simulates [SolCalendar](https://play.google.com/store/apps/details?id=net.daum.android.solcalendar) app. This project is just used for studying.
+
+Calendar module for iOS that simulates [SolCalendar](https://play.google.com/store/apps/details?id=net.daum.android.solcalendar) app.
+> **Note**: This project is just used for studying.
 
 ##Screenshots
-<img src="https://github.com/yang2012/JYCalendar/tree/main/Resource/main.png" width="50%" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/yang2012/JYCalendar/tree/main/Resource/detail.png" width="50%" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/yang2012/JYCalendar/tree/main/Resource/menu.png" width="50%" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/yang2012/JYCalendar/tree/main/Resource/monthPicker.png" width="50%" />
+
+<img src="https://github.com/yang2012/JYCalendar/tree/master/Resource/main.png" width="40%" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/yang2012/JYCalendar/tree/master/Resource/detail.png" width="40%" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/yang2012/JYCalendar/tree/master/Resource/menu.png" width="40%" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/yang2012/JYCalendar/tree/master/Resource/monthPicker.png" width="40%" />
 
 ##Getting Started
 
 To compile the project, you can follow these commands:
 
-{% codeblock lang:shell %}
+```shell
 $ git clone https://github.com/yang2012/JYCalendar.git JYCalendar
 $ cd JYCalendar
 $ pod install
 $ open JYCalendar.xcworkspace
-{% endcodeblock %}
+```
 
 If you're getting some error when running `pod` command, please enter following command:
 
 	$ [sudo] gem install cocoapods
 
 ##Requirements
-Requires iOS 7.0, ARC, and the CoreLocation Framework.
 
-##Frameworks
+JYCalendar requires iOS 7.0 or greater, ARC and relies on the following frameworks:
 
-1. ReactiveCocoa
-2. Mantle
+- CoreLocation
+- ReactiveCocoa
+- Mantle
 
 ##TODO
 
@@ -34,9 +37,11 @@ Requires iOS 7.0, ARC, and the CoreLocation Framework.
 3. Import holidays.
 
 ##License
+
 JYCalendar is available under MIT license. For more info, please see the [LICENSE](https://github.com/yang2012/JYCalendar/LICENSE) file.
 
 ##Contribute
+
 Feel free to fork and make pull requests! I am also very happy if you tell me about your thoughts about this project.
 
 [@justinyang2012](http://www.justinyangis.me)

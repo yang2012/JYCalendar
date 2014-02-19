@@ -5,7 +5,7 @@ Calendar module for iOS that simulates [SolCalendar](https://play.google.com/sto
 
 ##Screenshots
 
-<img src="https://github.com/yang2012/JYCalendar/tree/master/Resource/main.png" width="40%" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/yang2012/JYCalendar/tree/master/Resource/detail.png" width="40%" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/yang2012/JYCalendar/tree/master/Resource/menu.png" width="40%" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/yang2012/JYCalendar/tree/master/Resource/monthPicker.png" width="40%" />
+<img src="https://raw.github.com/yang2012/JYCalendar/master/Resource/main.png" width="40%" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://raw.github.com/yang2012/JYCalendar/master/Resource/detail.png" width="40%" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://raw.github.com/yang2012/JYCalendar/master/Resource/menu.png" width="40%" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://raw.github.com/yang2012/JYCalendar/master/Resource/monthPicker.png" width="40%" />
 
 ##Getting Started
 

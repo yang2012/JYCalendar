@@ -175,7 +175,7 @@ static CGFloat kHeightofMenuView = 145.0f;
          [self.cityLabel sizeToFit];
          
          NSDate *date                  = newCondition.date;
-         self.dateLabel.text           = [NSString stringWithFormat:@"%@, %@ %d.", date.weekdayName, date.monthName, date.day];
+         self.dateLabel.text           = [NSString stringWithFormat:@"%@, %@ %ld.", date.weekdayName, date.monthName, (long)date.day];
          [self.dateLabel sizeToFit];
          
          self.conditionsLabel.text     = newCondition.conditionDescription;

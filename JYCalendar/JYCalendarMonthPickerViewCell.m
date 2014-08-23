@@ -65,7 +65,7 @@
 - (void)setMonth:(NSDate *)month
 {
     _month = month;
-    self.monthNumLabel.text = [NSString stringWithFormat:@"%d", month.month];
+    self.monthNumLabel.text = [NSString stringWithFormat:@"%ld", (long)month.month];
     [self.monthNumLabel sizeToFit];
     
     self.monthNameLabel.text = month.monthName;

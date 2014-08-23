@@ -53,9 +53,9 @@
 
 - (void)setTime:(NSDate *)time
 {
-    self.monthLabel.text = [NSString stringWithFormat:@"%d", time.month];
+    self.monthLabel.text = [NSString stringWithFormat:@"%ld", (long)time.month];
     [self.monthLabel sizeToFit];
-    self.yearLabel.text = [NSString stringWithFormat:@"%d", time.year];
+    self.yearLabel.text = [NSString stringWithFormat:@"%ld", (long)time.year];
     [self.yearLabel sizeToFit];
     
     [self setNeedsLayout];

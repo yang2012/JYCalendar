@@ -34,7 +34,7 @@
     NSUInteger numPartialDays        = [JYCalendarUtil _numberOfDaysInPreviousPartialWeek:[date firstDateOfTheMonth]];
     NSDateComponents *component      = [dateOfPreviousMonth dateComponents];
     
-    for (int i = numOfDays - (numPartialDays - 1); i < numOfDays + 1; i++) {
+    for (NSInteger i = numOfDays - (numPartialDays - 1); i < numOfDays + 1; i++) {
         [days addObject:[NSDate dateForDay:i month:component.month year:component.year]];
     }
     
@@ -56,7 +56,7 @@
 
 + (NSUInteger)_numberOfDaysInPreviousPartialWeek:(NSDate *)date
 {
-    int num = [date week] - 1;
+    NSInteger num = [date week] - 1;
     if (num == 0) {
         num = 7;
     }
@@ -69,7 +69,7 @@
     component.day                    = [date numberOfDaysInMonth];
     NSDate *lastDayOfTheMonth        = [[NSCalendar currentCalendar] dateFromComponents:component];
     
-    int num = 7 - [lastDayOfTheMonth week];
+    NSInteger num = 7 - [lastDayOfTheMonth week];
     if (num == 0) {
         num = 7;
     }

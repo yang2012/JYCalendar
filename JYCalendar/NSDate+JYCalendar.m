@@ -57,7 +57,7 @@
                                       toDate:self options:0];
 }
 
-+ (NSDate *)dateForDay:(unsigned int)day month:(unsigned int)month year:(unsigned int)year
++ (NSDate *)dateForDay:(NSUInteger)day month:(NSUInteger)month year:(NSUInteger)year
 {
     NSCalendar *gregorian               = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *components        = [[NSDateComponents alloc] init];
@@ -260,11 +260,10 @@
 }
 
 + (NSInteger)dayBetweenStartDate:(NSDate *)startDate endDate:(NSDate *)endDate {
-    NSCalendar *calendar                = [[NSCalendar alloc]
+    NSCalendar *calendar    = [[NSCalendar alloc]
                                            initWithCalendarIdentifier:NSGregorianCalendar];
-    unsigned int unitFlags              = NSCalendarUnitDay;
-    NSDateComponents *comps             = [calendar components:unitFlags fromDate:startDate toDate:endDate options:0];
-    int days                            = [comps day];
+    NSDateComponents *comps = [calendar components:NSCalendarUnitDay fromDate:startDate toDate:endDate options:0];
+    NSUInteger days         = [comps day];
     return days;
 }
 

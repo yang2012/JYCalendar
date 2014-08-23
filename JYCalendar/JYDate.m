@@ -15,7 +15,7 @@
 {
     NSString *description = @"";
     if (self.date) {
-        description = [NSString stringWithFormat:@"%d", self.date.day];
+        description = [NSString stringWithFormat:@"%ld", (long)self.date.day];
     }
     return description;
 }

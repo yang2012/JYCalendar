@@ -172,7 +172,7 @@ static NSString *kHeaderCellIdentifier = @"JYHeaderCell";
 {
     _currentDate = currentDate;
     
-    self.yearLabel.text = [NSString stringWithFormat:@"%d", currentDate.year];
+    self.yearLabel.text = [NSString stringWithFormat:@"%ld", (long)currentDate.year];
     [self.yearLabel sizeToFit];
 }
 

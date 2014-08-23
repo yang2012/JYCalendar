@@ -1,31 +1,27 @@
 //
-//  JYAppDelegate.m
-//  JYCalendar
+//  ISUAppDelegate.m
+//  JYCalendarDemo
 //
-//  Created by Justin Yang on 14-1-17.
+//  Created by Justin Yang on 14-8-23.
 //  Copyright (c) 2014年 Nanjing University. All rights reserved.
 //
 
-#import "JYAppDelegate.h"
+#import "ISUAppDelegate.h"
 #import "JYCalendarViewController.h"
 
-@implementation JYAppDelegate
+@implementation ISUAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [self _initAppearance];
-    
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[JYCalendarViewController alloc] init]];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = navigationController;
     self.window.backgroundColor = [UIColor whiteColor];
-    self.window.clipsToBounds =YES;
     [self.window makeKeyAndVisible];
-    
     return YES;
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -51,12 +47,6 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
-
-- (void)_initAppearance
-{    
-    // Set appearance info
-    [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
 }
 
 @end

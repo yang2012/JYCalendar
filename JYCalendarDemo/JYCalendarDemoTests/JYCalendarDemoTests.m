@@ -1,18 +1,18 @@
 //
-//  JYCalendarTests.m
-//  JYCalendarTests
+//  JYCalendarDemoTests.m
+//  JYCalendarDemoTests
 //
-//  Created by Justin Yang on 14-1-17.
+//  Created by Justin Yang on 14-8-23.
 //  Copyright (c) 2014年 Nanjing University. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 
-@interface JYCalendarTests : XCTestCase
+@interface JYCalendarDemoTests : XCTestCase
 
 @end
 
-@implementation JYCalendarTests
+@implementation JYCalendarDemoTests
 
 - (void)setUp
 {
